@@ -1,0 +1,35 @@
+/* Add your existing styles here */
+
+/* Login Page Styles */
+.login-section {
+    background-color: var(--light);
+    padding: 80px 0;
+}
+
+.login-form {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    color: var(--primary);
+}
+
+.login-form form {
+    margin-top: 20px;
+}
+
+.login-form input,
+.login-form button {
+    margin-bottom: 15px;
+}
+
+.login-form button {
+    background-color: var(--primary);
+}
+
+.login-form button:hover {
+    background-color: var(--secondary);
+}
