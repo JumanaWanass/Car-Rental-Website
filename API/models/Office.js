@@ -31,12 +31,14 @@ class Office {
         return db.execute("SELECT * FROM office");
     }
 
-    static findById(id) {
-        return db.execute(`SELECT * FROM office WHERE officeID='${id}'`);
-    }
+    static findByAttributes(attributes) 
+    {
+        const whereClause = Object.keys(attributes)
+            .map(key => `${key}='${attributes[key]}'`)
+            .join(' AND ');
 
-    static findByPhone(phone) {
-        return db.execute(`SELECT * FROM office WHERE telephone='${phone}'`)
+        const sql = `SELECT * FROM office WHERE ${whereClause}`;
+        return db.execute(sql);
     }
 }
 
