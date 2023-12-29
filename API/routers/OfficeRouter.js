@@ -1,10 +1,12 @@
+// routers/OfficeRouter.js
 const express = require('express');
-const officeController = require('../controllers/OfficeController');
 const router = express.Router();
+const OfficeController = require('../controllers/OfficeController');
 
-router.get('/all', officeController.getAll);
-router.get('/id/:id', officeController.getByID); 
-router.get('/tel/:tel', officeController.getByPhone); 
-
+router.get('/', OfficeController.getAll);
+router.get('/:id', OfficeController.getByID);
+router.get('/search', OfficeController.getByAttribute);
+router.delete('/search', OfficeController.deleteByAttribute);
+router.put('/search', OfficeController.updateByAttribute); 
 
 module.exports = router;
