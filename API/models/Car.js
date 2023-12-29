@@ -2,7 +2,6 @@ const db = require('../config/db');
 
 class Car 
 {
-
     constructor(model, color, year, kilometers, seatNums, transmissionType, make, 
         photoID, status, plateID, pricePerDay, officeID)
     {
@@ -53,13 +52,42 @@ class Car
         return db.execute(sql);
     }
 
+    static findAll() 
+    {
+        const sql = 'SELECT * FROM Car;';
+        return db.execute(sql);
+    }
+
     static findByAttributes(attributes) 
     {
         const whereClause = Object.keys(attributes)
             .map(key => `${key}='${attributes[key]}'`)
             .join(' AND ');
 
-        const sql = `SELECT * FROM car WHERE ${whereClause}`;
+        const sql = `SELECT * FROM Car WHERE ${whereClause}`;
+        return db.execute(sql);
+    }
+
+    static deleteByAttributes(attributes) 
+    {
+        const whereClause = Object.keys(attributes)
+            .map(key => `${key}='${attributes[key]}'`)
+            .join(' AND ');
+
+        const sql = `DELETE FROM Car WHERE ${whereClause};`;
+        return db.execute(sql);
+    }
+
+    static updateByAttributes(attributes, newValues) {
+        const whereClause = Object.keys(attributes)
+            .map(key => `${key}='${attributes[key]}'`)
+            .join(' AND ');
+
+        const setClause = Object.keys(newValues)
+            .map(key => `${key}='${newValues[key]}'`)
+            .join(', ');
+
+        const sql = `UPDATE Car SET ${setClause} WHERE ${whereClause};`;
         return db.execute(sql);
     }
     /* Example usage:
@@ -72,4 +100,6 @@ class Car
 Car.findByAttributes(carAttributes)
     .then(result => console.log(result));
     */
+
 }
+module.exports = Car;

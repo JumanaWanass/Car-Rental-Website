@@ -1,6 +1,7 @@
 const db = require('../config/db');
 
-class Office {
+class Office 
+{
     constructor(telephone, Street, CountryName, City)  {
         this.telephone = telephone;
         this.Street = Street;
@@ -38,6 +39,29 @@ class Office {
             .join(' AND ');
 
         const sql = `SELECT * FROM office WHERE ${whereClause}`;
+        return db.execute(sql);
+    }
+
+    static deleteByAttributes(attributes) 
+    {
+        const whereClause = Object.keys(attributes)
+            .map(key => `${key}='${attributes[key]}'`)
+            .join(' AND ');
+
+        const sql = `DELETE FROM Office WHERE ${whereClause};`;
+        return db.execute(sql);
+    }
+
+    static updateByAttributes(attributes, newValues) {
+        const whereClause = Object.keys(attributes)
+            .map(key => `${key}='${attributes[key]}'`)
+            .join(' AND ');
+
+        const setClause = Object.keys(newValues)
+            .map(key => `${key}='${newValues[key]}'`)
+            .join(', ');
+
+        const sql = `UPDATE Office SET ${setClause} WHERE ${whereClause};`;
         return db.execute(sql);
     }
 }
