@@ -24,7 +24,9 @@ This is a simple API for a car rental system. It provides endpoints to interact 
 
    ```bash
    npm install
+   npm install dotenv express
    ```
+
 
 ## Database Setup
 
