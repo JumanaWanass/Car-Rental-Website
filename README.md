@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Read me
 
 ## How to run
@@ -13,7 +12,7 @@ Each time you change the code you have to restart the server
 ```
 node --env-file .env server.js
 ```
-=======
+=========
 
 # Car Rental API
 
