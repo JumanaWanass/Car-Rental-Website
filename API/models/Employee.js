@@ -83,5 +83,20 @@ class Employee
         const sql = `UPDATE Employee SET ${setClause} WHERE ${whereClause};`;
         return db.execute(sql);
     }
+
+    static createEmployee(employee) {
+        const newEmployee = new Employee(
+            employee.ssn,
+            employee.Fname,
+            employee.Lname,
+            employee.Bdate,
+            employee.street,
+            employee.CountryName,
+            employee.City,
+            employee.Email,
+            employee.Password
+        );
+        return newEmployee.save();
+    }
 }
 module.exports = Employee;

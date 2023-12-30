@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const OfficeController = require('../controllers/OfficeController');
 
-router.get('/', OfficeController.getAll);
-router.get('/:id', OfficeController.getByID);
-router.get('/search', OfficeController.getByAttribute);
-router.delete('/search', OfficeController.deleteByAttribute);
-router.put('/search', OfficeController.updateByAttribute); 
+router.get('/', OfficeController.getAll)
+router.get('/search', OfficeController.getByAttributes);
+router.post('/', OfficeController.createOffice);
+router.delete('/search', OfficeController.deleteByAttributes);
+router.put('/search', OfficeController.updateByAttributes); 
 
 module.exports = router;

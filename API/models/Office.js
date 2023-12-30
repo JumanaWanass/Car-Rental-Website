@@ -64,6 +64,16 @@ class Office
         const sql = `UPDATE Office SET ${setClause} WHERE ${whereClause};`;
         return db.execute(sql);
     }
+    static createOffice(Office)
+    {
+        const newOffice = new Office(
+            Office.telephone,
+            Office.Street,
+            Office.CountryName,
+            Office.City
+        );
+        return newOffice.save();
+    }
 }
 
 module.exports = Office;

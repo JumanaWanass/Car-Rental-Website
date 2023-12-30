@@ -90,6 +90,25 @@ class Car
         const sql = `UPDATE Car SET ${setClause} WHERE ${whereClause};`;
         return db.execute(sql);
     }
+
+    static createCar(car) 
+    {
+        const newCar = new Car(
+            car.model,
+            car.color,
+            car.year,
+            car.kilometers,
+            car.seatNums,
+            car.transmissionType,
+            car.make,
+            car.photoID,
+            car.status,
+            car.plateID,
+            car.pricePerDay,
+            car.officeID
+        );
+        return newCar.save();
+    }
     /* Example usage:
     const carAttributes = {
     color: 'Red',
