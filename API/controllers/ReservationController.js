@@ -39,3 +39,13 @@ exports.updateByAttributes = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.createReservation = async (req, res) => {
+  try {
+    const reservation = req.body; // assuming you send reservation in the request body
+    await Reservation.createReservation(reservation);
+    res.status(200).json({ message: 'Reservation created successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
