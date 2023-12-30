@@ -51,6 +51,7 @@ exports.updateByAttributes = async (req, res) => {
 }};
 
 exports.createCar = async (req, res) => {
+    //console.log(req.body);
     try {
         const car = req.body; // Assuming car is sent in the request body
         const result = await Car.createCar(car);
@@ -59,3 +60,14 @@ exports.createCar = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// exports.testPrint =async (req,res)=> {
+// try{
+//     // const car = req.body; // Assuming car is sent in the request body
+//      console.log(req.body);
+//      res.sendFile(car +)
+// }catch (error) {
+//     res.status(500).json({ error: error.message });
+// }
+
+// };

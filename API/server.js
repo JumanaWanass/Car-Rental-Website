@@ -4,8 +4,8 @@ const cors = require('cors');
 const app = express();  //we're hosting
 
 // Body parser
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: false }));  //to decode the data sent through html
+app.use(express.json());   //to accept data in json format
 
 // CORS
 app.use(cors());
@@ -30,3 +30,11 @@ app.use('/employee', EmployeeRouter);
 app.use('/reservation', ReservationRouter); 
 
 app.listen(5000, () => console.log(`Server running on http://localhost:5000/`));
+
+
+// app.get('/car/create', (req, res) => {
+//   // Assuming you have attribute and value information
+//   const attributes = {
+//     attribute: 'color',
+//     value: 'blue'
+//   }});
