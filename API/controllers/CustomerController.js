@@ -42,3 +42,13 @@ exports.updateByAttributes = async (req, res) => {
     res.status(500).json({ error: error });
   }
 };
+
+exports.createCustomer = async (req, res) => {
+  try {
+    const customer = req.body; // Assuming customer is sent in the request body
+    const [result, _] = await Customer.createCustomer(customer);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+}

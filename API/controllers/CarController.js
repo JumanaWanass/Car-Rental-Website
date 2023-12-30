@@ -47,5 +47,15 @@ exports.updateByAttributes = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     //    res.status(500).json({ error: error });
+
+}};
+
+exports.createCar = async (req, res) => {
+    try {
+        const car = req.body; // Assuming car is sent in the request body
+        const result = await Car.createCar(car);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 };

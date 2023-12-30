@@ -1,7 +1,8 @@
 const db = require("../config/db");
 class Reservation 
 {
-  constructor(
+  constructor
+  (
     country,
     paymentStatus,
     pickupDate,
@@ -13,7 +14,8 @@ class Reservation
     carID,
     empID,
     custID
-  ) {
+  ) 
+  {
     this.country = country;
     this.paymentStatus = paymentStatus;
     this.pickupDate = pickupDate;
@@ -72,7 +74,8 @@ class Reservation
     const sql = `DELETE FROM Reservation WHERE ${whereClause};`;
     return db.execute(sql);
   }
-  static updateByAttributes(attributes, newValues) {
+  static updateByAttributes(attributes, newValues) 
+  {
     const whereClause = Object.keys(attributes)
       .map((key) => `${key}='${attributes[key]}'`)
       .join(" AND ");
@@ -80,7 +83,25 @@ class Reservation
       .map((key) => `${key}='${newValues[key]}'`)
       .join(", ");
     const sql = `UPDATE Reservation SET ${setClause} WHERE ${whereClause};`;
-    return db.execute(sql); 
+    return db.execute(sql);
   }
+  
+  static createReservation(Reservation) {
+  const newReservation = new Reservation(
+    Reservation.country,
+    Reservation.paymentStatus,
+    Reservation.pickupDate,
+    Reservation.pickupStreet,
+    Reservation.pickupCity,
+    Reservation.returnDate,
+    Reservation.returnStreet,
+    Reservation.returnCity,
+    Reservation.carID,
+    Reservation.empID,
+    Reservation.custID
+  );
+  return newReservation.save();
+}
+
 }
 module.exports = Reservation;

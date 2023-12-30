@@ -74,5 +74,20 @@ class Customer
         return db.execute(sql);
     }
 
+    static createCustomer(customer)
+    {
+        const newCustomer = new Customer(
+            customer.ssn,
+            customer.firstName,
+            customer.lastName,
+            customer.birthDate,
+            customer.street,
+            customer.countryName,
+            customer.city,
+            customer.email,
+            customer.password
+        );
+        return newCustomer.save();
+    }
 }
 module.exports = Customer;

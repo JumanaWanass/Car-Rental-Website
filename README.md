@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+# Read me
+
+## How to run
+First you have to be in API directory then run the following commands
+
+First time only.
+```
+npm install -y
+```
+
+Each time you change the code you have to restart the server
+```
+node --env-file .env server.js
+```
+=======
 
 # Car Rental API
 
@@ -74,3 +90,4 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 - Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reservationid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
 - Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=customerid&value=2](http://localhost:5000/reservation/search?attribute=customerid&value=2)
 
+>>>>>>>>> Temporary merge branch 2
