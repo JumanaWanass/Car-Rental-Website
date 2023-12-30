@@ -52,12 +52,12 @@ exports.updateByAttributes = async (req, res) => {
 
 exports.createCar = async (req, res) => {
     //console.log(req.body);
+    const car = req.body; // Assuming car is sent in the request body
     try {
-        const car = req.body; // Assuming car is sent in the request body
         const result = await Car.createCar(car);
         res.status(200).json(result);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message, car:car });
     }
 };
 

@@ -3,8 +3,8 @@ const cors = require('cors');
 const app = express();  //we're hosting
 
 // Body parser
-app.use(express.urlencoded({ extended: false }));  //to decode the data sent through html
-app.use(express.json());   //to accept data in json format
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 // CORS
 app.use(cors());
@@ -19,7 +19,6 @@ const ReservationRouter = require('./routers/ReservationRouter');
 app.get('/', (req, res) => {
   res.status(200).json({ hi: 'welcome' });
 });
-
 
 // Routers
 app.use('/office', OfficeRouter);

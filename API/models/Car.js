@@ -101,7 +101,7 @@ class Car
             car.seatNums,
             car.transmissionType,
             car.make,
-            car.photoID,
+            2525,
             car.status,
             car.plateID,
             car.pricePerDay,
