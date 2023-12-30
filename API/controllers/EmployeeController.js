@@ -39,3 +39,13 @@ exports.updateByAttributes = async (req, res) => {
         res.status(500).json({ error: error });
     }
 };
+
+exports.createEmployee = async (req, res) => {
+    try {
+        const employee = req.body; // Assuming employee is sent in the request body
+        const [result, _] = await Employee.createEmployee(employee);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
