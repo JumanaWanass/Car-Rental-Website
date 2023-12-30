@@ -262,7 +262,7 @@
                 <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">hi</span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
@@ -407,27 +407,31 @@
 </body>
 <script>
     $(document).ready(function () {
-        $("#carForm").submit(function (event) {   //to handle form submission
-            event.preventDefault(); //prevent the default form submission
-            var formData = new FormData(this); // create FormData object to easily handle file uploads
-
-            //make an Ajax request
+        $("#carForm").submit(function (event) {
+            event.preventDefault(); // prevent the default form submission
+        
+            // Convert form data to a plain JavaScript object
+            var formData = {};
+            $(this).serializeArray().forEach(function(item) {
+                formData[item.name] = item.value;
+            });
+        
+            // Make an Ajax request
             $.ajax({
-                url: 'http://localhost:5000/car/register',
+                url: 'http://localhost:5000/car/create',
                 method: 'POST',
-                data: formData,
-                dataType: 'json',
-                processData: false, // Prevent jQuery from processing the data
-                contentType: false, // Set content type to false as FormData will handle it
+                contentType: 'application/json',  // Set content type to JSON
+                data: JSON.stringify(formData),  // Convert form data to JSON string
                 success: function (response) {
-                console.log('Success:', response);
+                    console.log('Success:', response);
                 },
                 error: function (error) {
                     // Handle errors
-                    console.log("Error:", error);
+                    console.log('Error:', error);
                 },
             });
         });
+        
     });
 </script>
 

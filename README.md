@@ -1,19 +1,5 @@
 # Read me
 
-## How to run
-First you have to be in API directory then run the following commands
-
-First time only.
-```
-npm install -y
-```
-
-Each time you change the code you have to restart the server
-```
-node --env-file .env server.js
-```
-=========
-
 # Car Rental API
 
 ## Description
@@ -39,7 +25,6 @@ This is a simple API for a car rental system. It provides endpoints to interact 
 
    ```bash
    npm install
-   npm install dotenv express
    ```
 
 
@@ -52,7 +37,12 @@ This is a simple API for a car rental system. It provides endpoints to interact 
 ## Running the Server
 
 ```bash
-node server.js
+npm start
+```
+
+or for development
+```bash
+npm run dev
 ```
 
 The server will be running at [http://localhost:5000/](http://localhost:5000/).
