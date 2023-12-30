@@ -225,9 +225,86 @@
                     addOption(modelsDropdown, "Mazda MX-5 RF Club Targa");
                     addOption(modelsDropdown,"Mazda Tribute Hybrid SUV ");
                 break;
-                // Add more cases for other makes if needed
-                default:
-                    addOption(modelsDropdown, "Other Model");
+                case "Mercedes-Benz":
+                    addOption(modelsDropdown, "Mercedes-Benz A Class Hatchback");
+                    addOption(modelsDropdown, "Mercedes-Benz AMG GT 4-Door Coupe 43");
+                    addOption(modelsDropdown, "Mercedes-Benz AMG GT Coupe");
+                    addOption(modelsDropdown, "Mercedes-Benz B-Class Electric Drive-MPV");
+                    addOption(modelsDropdown, "Mercedes-Benz C Class 43 AMG");
+                    addOption(modelsDropdown, "Mercedes-Benz C-Class ANG Line Conertible");
+                    addOption(modelsDropdown, "Mercedes-Benz EQB 300 SUV");
+                    addOption(modelsDropdown, "Mercedes-Benz G-Class 550 SUV");
+                    addOption(modelsDropdown, "Mercedes-Benz GLA AMG 45 S SUV");
+                    addOption(modelsDropdown,"Mercedes-Benz GLC AMG Line SUV");
+                break;
+                
+                case "Mini":
+                    addOption(modelsDropdown, "MINI Clubman John Cooper Works Wagon");
+                    addOption(modelsDropdown, "MINI Convertible Cooper Signature");
+                    addOption(modelsDropdown, "MINI Cooper 3 door Hatchback");
+                    addOption(modelsDropdown, "MINI Cooper 5 Door Hatchback");
+                    addOption(modelsDropdown, "Mini Cooper Convertible Jcw Signature");
+                    addOption(modelsDropdown, "MINI Cooper Hatchback");
+                    addOption(modelsDropdown, "MINI Cooper Paceman S SUV");
+                    addOption(modelsDropdown, "MINI Cooper Signature Convertible");
+                    addOption(modelsDropdown, "MINI Countryman Hatchback");
+                    addOption(modelsDropdown,"MINI Hardtop 2 Door Cooper Signature");
+                break;
+                case "Nissan":
+                    addOption(modelsDropdown, "Nissan 370Z Nismo Coupe");
+                    addOption(modelsDropdown, "Nissan Altima SL Sedan");
+                    addOption(modelsDropdown, "Nissan Ariya EV Evolve SUV");
+                    addOption(modelsDropdown, "Nissan Armada SE SUV");
+                    addOption(modelsDropdown, "Nissan Juke Acenta SUV");
+                    addOption(modelsDropdown, "Nissan Juke Hybrid N-Design SUV");
+                    addOption(modelsDropdown, "Nissan Leaf SL Electric Hatchback");
+                    addOption(modelsDropdown, "Nissan Maxima Platinum Sedan");
+                    addOption(modelsDropdown, "Nissan Maxima SV Sedan");
+                    addOption(modelsDropdown,"Nissan Z Performance Coupe");
+                break;
+                case "Subaru":
+                    addOption(modelsDropdown, "Subaru Ascent Limited SUV");
+                    addOption(modelsDropdown, "Subaru BRZ Limited Coupe");
+                    addOption(modelsDropdown, "Subaru BRZ Sport Premium Coupe");
+                    addOption(modelsDropdown, "Subaru Crosstrek Hybrid SUV");
+                    addOption(modelsDropdown, "Subaru Forester Luxury SUV");
+                    addOption(modelsDropdown, "Subaru Impreza Hatchback");
+                    addOption(modelsDropdown, "Subaru Legacy Premium Sedan");
+                    addOption(modelsDropdown, "Subaru Outback Premium SUV");
+                    addOption(modelsDropdown, "Subaru Outback Premium Wagon");
+                    addOption(modelsDropdown,"Subaru XV Crossover SUV");
+                break;
+                case "Tesla":
+                    addOption(modelsDropdown, "Tesla Model 3");
+                    addOption(modelsDropdown, "Tesla Model S");
+                    addOption(modelsDropdown, "Tesla Model Y");
+                    addOption(modelsDropdown, "Tesla Model z");
+                    addOption(modelsDropdown, "Tesla Model X");
+                break;
+                case "Toyota":
+                    addOption(modelsDropdown, "Toyota 4Runner Limited SUV");
+                    addOption(modelsDropdown, "Toyota 86 Coupe");
+                    addOption(modelsDropdown, "Toyota Auris Dynamic Hatchback");
+                    addOption(modelsDropdown, "Toyota Avalon XLE Sedan");
+                    addOption(modelsDropdown, "Toyota Camry Hybrid Sedan");
+                    addOption(modelsDropdown, "Toyota Camry SE Auto Sedan");
+                    addOption(modelsDropdown, "Toyota Camry XLE Hybrid Sedan");
+                    addOption(modelsDropdown, "Toyota C-HR C Show SUV");
+                    addOption(modelsDropdown, "Toyota Corolla Cross Dynamic SUV");
+                    addOption(modelsDropdown, "Toyota Corolla Premium Sedan");
+                break;
+                case "Volkswagen":
+                    addOption(modelsDropdown, "Volkswagen Atlas SE SUV");
+                    addOption(modelsDropdown, "Volkswagen Beetle Dune Hatchback");
+                    addOption(modelsDropdown, "Volkswagen Beetle S Convertible");
+                    addOption(modelsDropdown, "Volkswagen Cross UP Hatchback");
+                    addOption(modelsDropdown, "Volkswagen EOS Komfort Convertible");
+                    addOption(modelsDropdown, "Volkswagen Golf Alltrack Wagon");
+                    addOption(modelsDropdown, "Volkswagen Golf GTI Hatchback");
+                    addOption(modelsDropdown, "Volkswagen Golf GTI SE Hatchback");
+                    addOption(modelsDropdown, "Volkswagen Golf Variant R Wagon");
+                    addOption(modelsDropdown, "Volkswagen Jetta SE Sedan");
+                break;
             }
         }
 
@@ -287,7 +364,8 @@
                     <!-- Make -->
                     <div class="form-group">
                         <label for="make">Make:</label>
-                        <select id="make" name="make" onchange="updateModels()" class="form-control" required>
+                        <select id="make" name="make" oninput="updateModels()" class="form-control" required>
+                            <option value="" disabled selected>Choose car's make</option>
                                 <option value="Abarth">Abarth</option>
                                 <option value="Acura">Acura</option>
                                 <option value="Alfa Romeo">Alfa Romeo</option>
@@ -319,7 +397,7 @@
                     <div class="form-group">
                         <label for="model">Model:</label>
                         <select id="model" name="model"  required>
-                            <!-- Options -->
+                            <option value="" disabled selected>Choose car's make first</option>
                         </select>
                     </div>
     
@@ -405,6 +483,7 @@
     </div>
 
 </body>
+
 <script>
     $(document).ready(function () {
         $("#carForm").submit(function (event) {
