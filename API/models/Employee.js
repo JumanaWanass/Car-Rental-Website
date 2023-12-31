@@ -52,10 +52,17 @@ class Employee
         const whereClause = Object.keys(attributes)
             .map(key => `${key}='${attributes[key]}'`)
             .join(' AND ');
-
-        const sql = `SELECT * FROM Employee WHERE ${whereClause};`;
+    
+        // Check if whereClause is empty
+        const sql = whereClause
+            ? `SELECT * FROM Employee WHERE ${whereClause}`
+            : 'SELECT * FROM Employee';
+    
+        console.log('Generated SQL query:', sql);
+    
         return db.execute(sql);
     }
+    
 
     static findAll() {
         const sql = 'SELECT * FROM Employee;';
