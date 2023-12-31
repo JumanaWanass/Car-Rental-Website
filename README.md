@@ -59,7 +59,7 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 
 - Get all customers: [http://localhost:5000/customer](http://localhost:5000/customer)
 - Get customer by ID: [http://localhost:5000/customer/search?attribute=custid&value=1](http://localhost:5000/customer/search?attribute=custid&value=1)
-- Get customers by other attributes: [http://localhost:5000/customer/search?attribute=lastname&value=Doe](http://localhost:5000/customer/search?attribute=lastname&value=Doe)
+- Get customers by other attributes: [http://localhost:5000/customer/search?attribute=lname&value=Doe](http://localhost:5000/customer/search?attribute=lname&value=Doe)
 
 ### Employee Class
 
