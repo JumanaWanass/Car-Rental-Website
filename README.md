@@ -70,12 +70,12 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 ### Office Class
 
 - Get all offices: [http://localhost:5000/office](http://localhost:5000/office)
-- Get office by ID: [http://localhost:5000/office/1](http://localhost:5000/office/1)
+- Get office by ID: [http://localhost:5000/office/search?attribute=officeid&value=1](http://localhost:5000/office/search?attribute=officeid&value=1)
 - Get office by telephone: [http://localhost:5000/office/search?attribute=telephone&value=123456789](http://localhost:5000/office/search?attribute=telephone&value=123456789)
 
 ### Reservation Class
 
-- Get all reservations: [http://localhost:5000/reservation/getAll](http://localhost:5000/reservation)
+- Get all reservations: [http://localhost:5000/reservation](http://localhost:5000/reservation)
 - Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reservationid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
 - Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=custid&value=2](http://localhost:5000/reservation/search?attribute=custid&value=2)
 
