@@ -76,7 +76,7 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 ### Reservation Class
 
 - Get all reservations: [http://localhost:5000/reservation](http://localhost:5000/reservation)
-- Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reservationid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
+- Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reserveid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
 - Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=custid&value=2](http://localhost:5000/reservation/search?attribute=custid&value=2)
 
 >>>>>>>>> Temporary merge branch 2
