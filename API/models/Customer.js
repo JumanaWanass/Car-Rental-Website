@@ -1,12 +1,12 @@
 const db = require('../config/db');
 class Customer 
 {
-    constructor(ssn, fname, lname, bdate, street, countryName, city, email, password)
+    constructor(ssn, fname, lname, Bdate, street, countryName, city, email, password)
     {
         this.ssn = ssn;
         this.fname = fname;
         this.lname = lname;
-        this.bDate = bdate;
+        this.Bdate = Bdate;
         this.street = street;
         this.countryName = countryName;
         this.city = city;
@@ -18,20 +18,20 @@ class Customer
     {
         const sql = `INSERT INTO customer(
                         ssn,
-                        firstName,
-                        lastName,
-                        birthDate,
-                        street,
-                        countryName,
-                        city,
-                        email,
-                        password
+                        Fname,
+                        Lname,
+                        Bdate,
+                        Street,
+                        CountryName,
+                        City,
+                        Email,
+                        Password
                     )
                     VALUES(
                         '${this.ssn}',
                         '${this.fname}',
                         '${this.lname}',
-                        '${this.birthDate}',
+                        '${this.Bdate}',
                         '${this.street}',
                         '${this.countryName}',
                         '${this.city}',
@@ -62,8 +62,6 @@ class Customer
         return db.execute(sql);
     }
     
-    
-    
     static deleteByAttributes(attributes) 
     {
         const whereClause = Object.keys(attributes)
@@ -87,14 +85,14 @@ class Customer
     {
         const newCustomer = new Customer(
             customer.ssn,
-            customer.firstName,
-            customer.lastName,
-            customer.birthDate,
-            customer.street,
-            customer.countryName,
-            customer.city,
-            customer.email,
-            customer.password
+            customer.Fname,
+            customer.Lname,
+            customer.Bdate,
+            customer.Street,
+            customer.CountryName,
+            customer.City,
+            customer.Email,
+            customer.Password
         );
         return newCustomer.save();
     }
