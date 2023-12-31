@@ -1,12 +1,12 @@
 const db = require('../config/db');
 class Customer 
 {
-    constructor(ssn, firstName, lastName, birthDate, street, countryName, city, email, password)
+    constructor(ssn, fname, lname, bdate, street, countryName, city, email, password)
     {
         this.ssn = ssn;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.fname = fname;
+        this.lname = lname;
+        this.bDate = bdate;
         this.street = street;
         this.countryName = countryName;
         this.city = city;
@@ -29,8 +29,8 @@ class Customer
                     )
                     VALUES(
                         '${this.ssn}',
-                        '${this.firstName}',
-                        '${this.lastName}',
+                        '${this.fname}',
+                        '${this.lname}',
                         '${this.birthDate}',
                         '${this.street}',
                         '${this.countryName}',
@@ -47,14 +47,23 @@ class Customer
         return db.execute(sql);
     }
 
-    static findByAttributes(attributes) 
-    {
+    static findByAttributes(attributes) {
         const whereClause = Object.keys(attributes)
             .map(key => `${key}='${attributes[key]}'`)
             .join(' AND ');
-        const sql = `SELECT * FROM customer WHERE ${whereClause}`;
+    
+        // Check if whereClause is empty
+        const sql = whereClause
+            ? `SELECT * FROM customer WHERE ${whereClause}`
+            : 'SELECT * FROM customer';
+    
+        console.log('Generated SQL query:', sql);
+    
         return db.execute(sql);
     }
+    
+    
+    
     static deleteByAttributes(attributes) 
     {
         const whereClause = Object.keys(attributes)

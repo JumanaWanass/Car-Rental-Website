@@ -11,7 +11,14 @@ exports.getAll = async (req, res) => {
 
 exports.getByAttributes = async (req, res) => {
   try {
-    const attributes = req.body; // assuming you send attributes in the request body
+    const attribute = req.query.attribute;
+    const value = req.query.value;
+
+    if (!attribute || !value) {
+      return res.status(400).json({ error: 'Both attribute and value are required.' });
+    }
+
+    const attributes = { [attribute]: value };
     const [result, _] = await Office.findByAttributes(attributes);
     res.status(200).json(result);
   } catch (error) {
