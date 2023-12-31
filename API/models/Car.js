@@ -101,8 +101,8 @@ class Car
             car.seatNums,
             car.transmissionType,
             car.make,
-            2525,
-            car.status,
+            car.photoID ? car.photoID : 'default.png',
+            car.status  ? car.status : 'available',
             car.plateID,
             car.pricePerDay,
             car.officeID

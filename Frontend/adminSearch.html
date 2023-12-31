@@ -25,7 +25,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
- 
+
 </head>
 <body>
        <!-- Topbar Start -->
@@ -42,14 +42,11 @@
 
 <!-- Navbar Start -->
 <div class="container-fluid position-relative nav-bar p-0">
-    <div class="position-relative px-lg-5" style="z-index: 9;">
+    <div class="position-relative px-lg-5">
         <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
             <a href="" class="navbar-brand">
                 <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
                     <a href="admin.html" class="nav-item nav-link">Home</a>
@@ -63,25 +60,128 @@
 </div>
 <div class="container mx-auto">
     <h2>Search by any:</h2>
-    <form action="search_results.php" method="get">
-        <!-- Car Information Fields -->
-        <div class="form-group">
-        <label for="carSearch">Search by Car Information:</label>
-        <input type="text" id="carSearch" name="carSearch" placeholder="Enter car make, model, or color">
+    <form  method="get">
+        <div class="container mx-auto">
+            
+            <h3>Search by Car Information:</h3>
         </div>
+        <div class="form-group row">
+            <label for="carMake" class="col-md-2 col-form-label">Make:</label>
+            <div class="col-md-4">
+                <select id="carMake" name="carMake" oninput="updateModels()">
+                    <option value="" disabled selected>Choose car's make</option>
+                                <option value="Acura">Acura</option>
+                                <option value="Alfa Romeo">Alfa Romeo</option>
+                                <option value="Aston Martin">Aston Martin</option>
+                                <option value="Audi">Audi</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Buick">Buick</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Dodge">Dodge</option>
+                                <option value="Fiat">Fiat</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Lamborghini">Lamborghini</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Mini">Mini</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                </select>
+            </div>
+        
+            <label for="carModel" class="col-md-2 col-form-label">Model:</label>
+            <div class="col-md-4">
+                <select id="model" name="model" title="Choose an model">
+                    <option value="" disabled selected>Choose car's make first</option>
+                </select>
+            </div>
+
+                       
+        </div>
+        
+        <div class="form-group row">
+            <label for="carID" class="col-md-2 col-form-label">Car ID:</label>
+            <div class="col-md-4">
+                <input type="text" id="carID" name="carID">
+            </div>
+        
+            <label for="carColor" class="col-md-2 col-form-label">Color:</label>
+            <div class="col-md-4">
+                <input type="text" id="carColor" name="carColor">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+
         <!-- Customer Information Fields -->
         <div class="form-group">
-        <label for="customerSearch">Search by Customer Information:</label>
-        <input type="text" id="customerSearch" name="customerSearch" placeholder="Enter customer name or SSN">
+            <h3>Search by Customer Information:</h3>
         </div>
+        
+        <div class="form-group row">
+            <label for="customerID" class="col-md-2 col-form-label">Customer ID:</label>
+            <div class="col-md-4">
+                <input type="text" id="customerID" name="customerID">
+            </div>
+        
+            <label for="customerFirstName" class="col-md-2 col-form-label">First Name:</label>
+            <div class="col-md-4">
+                <input type="text" id="customerFirstName" name="customerFirstName">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="customerLastName" class="col-md-2 col-form-label">Last Name:</label>
+            <div class="col-md-4">
+                <input type="text" id="customerLastName" name="customerLastName">
+            </div>
+        
+            <label for="customerCountry" class="col-md-2 col-form-label">Country:</label>
+            <div class="col-md-4">
+                <input type="text" id="customerCountry" name="customerCountry">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="customerCity" class="col-md-2 col-form-label">City:</label>
+            <div class="col-md-4">
+                <input type="text" id="customerCity" name="customerCity">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+       
+
         <!-- Reservation Day Field -->
-        <div class="form-group">
-        <label for="reservationDay">Search by Reservation Day:</label>
-        <input type="date" id="reservationDay" name="reservationDay">
-        </div>    
-        <!-- Submit Button -->
-        <button type="submit">Search</button>
+        <div class="form-group row">
+            <h3>Search by Reservation Day:</h3>
+            <div class="col-md-4">
+                <input placeholder="Reservation Date" type="date" id="reservationDay" name="reservationDay">
+            </div>
+            
+            <div class="col-md-2 col-form-label">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
     </form>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/adminSearch.js"></script>
+
 </html>
