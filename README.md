@@ -64,8 +64,8 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 ### Employee Class
 
 - Get all employees: [http://localhost:5000/employee](http://localhost:5000/employee)
-- Get employee by ID: [http://localhost:5000/employee/search?attribute=employeeid&value=1](http://localhost:5000/employee/search?attribute=employeeid&value=1)
-- Get employees by other attributes: [http://localhost:5000/customer/search?attribute=lname&value=Doe](http://localhost:5000/customer/search?attribute=lname&value=Doe)
+- Get employee by ID: [http://localhost:5000/employee/search?attribute=empid&value=1](http://localhost:5000/employee/search?attribute=empid&value=1)
+- Get employees by other attributes: [http://localhost:5000/cemployee/search?attribute=lname&value=Doe](http://localhost:5000/employee/search?attribute=lname&value=Doe)
 
 ### Office Class
 
@@ -75,8 +75,8 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 
 ### Reservation Class
 
-- Get all reservations: [http://localhost:5000/reservation/getAll](http://localhost:5000/reservation/getAll)
+- Get all reservations: [http://localhost:5000/reservation/getAll](http://localhost:5000/reservation)
 - Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reservationid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
-- Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=customerid&value=2](http://localhost:5000/reservation/search?attribute=customerid&value=2)
+- Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=custid&value=2](http://localhost:5000/reservation/search?attribute=custid&value=2)
 
 >>>>>>>>> Temporary merge branch 2
