@@ -49,3 +49,14 @@ exports.createReservation = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.getAvailableCars = async (req, res) => {
+  try {
+    // Implement logic to get the list of available cars
+    const availableCars = await Reservation.findAvailableCars();
+
+    res.status(200).json(availableCars);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

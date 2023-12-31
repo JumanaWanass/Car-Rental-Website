@@ -101,7 +101,14 @@ class Reservation
     Reservation.custID
   );
   return newReservation.save();
-}
+  }
+
+  static findAvailableCars() {
+   
+    const sql = "SELECT * FROM Car WHERE status = 'Available';"; // Adjust the query based on your schema
+
+    return db.execute(sql);
+  }
 
 }
 module.exports = Reservation;

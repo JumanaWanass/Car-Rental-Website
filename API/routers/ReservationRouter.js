@@ -12,4 +12,6 @@ router.post('/updateByAttributes', ReservationController.updateByAttributes);
 
 router.get('/search', ReservationController.getByAttributes); 
 
+router.get('/availableCars', ReservationController.getAvailableCars);
+
 module.exports = router;
