@@ -65,7 +65,7 @@ The server will be running at [http://localhost:5000/](http://localhost:5000/).
 
 - Get all employees: [http://localhost:5000/employee](http://localhost:5000/employee)
 - Get employee by ID: [http://localhost:5000/employee/search?attribute=employeeid&value=1](http://localhost:5000/employee/search?attribute=employeeid&value=1)
-- Get employees by other attributes: [http://localhost:5000/employee/search?attribute=lastname&value=Smith](http://localhost:5000/employee/search?attribute=lastname&value=Smith)
+- Get employees by other attributes: [http://localhost:5000/customer/search?attribute=lname&value=Doe](http://localhost:5000/customer/search?attribute=lname&value=Doe)
 
 ### Office Class
 
