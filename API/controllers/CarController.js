@@ -51,8 +51,11 @@ exports.updateByAttributes = async (req, res) => {
 }};
 
 exports.createCar = async (req, res) => {
-    //console.log(req.body);
+
+    console.log(req.file);
     const car = req.body; // Assuming car is sent in the request body
+    car.photoID = req.file ? req.file.filename : 'default';
+
     try {
         const result = await Car.createCar(car);
         res.status(200).json(result);
