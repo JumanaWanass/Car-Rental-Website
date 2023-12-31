@@ -27,6 +27,367 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        // Function to dynamically update the models based on the selected make
+        function updateModels() {
+            // Get the selected make
+            var selectedMake = document.getElementById("makeDropdown").value;
+
+            // Get the models dropdown
+            var modelsDropdown = document.getElementById("model");
+
+            // Clear existing options
+            modelsDropdown.innerHTML = "";
+
+            addOption(modelsDropdown, "Select by model");
+
+            switch (selectedMake) {
+                case "Abarth":
+                    addOption(modelsDropdown, "124 Spider Convertible ");
+                    addOption(modelsDropdown, "500e Turismo Hatchback ");
+                    addOption(modelsDropdown, "595 Competizione Convertible");
+                    addOption(modelsDropdown, "595 Turismo Convertible ");
+                    addOption(modelsDropdown, "595 Turismo Hatchback");
+                    break;
+                case "Acura":
+                    addOption(modelsDropdown, "ILX Hybrid Sedan");
+                    addOption(modelsDropdown, "ILX Premium Sedan");
+                    addOption(modelsDropdown, "ILX Technology Plus Sedan");
+                    addOption(modelsDropdown, "ILX Tech Plus A Spec Sedan");
+                    addOption(modelsDropdown, "Integra Base Hatchback");
+                    addOption(modelsDropdown, "MDX Adv Ent Package SUV");
+                    addOption(modelsDropdown, "MDX A Spec SUV");
+                    addOption(modelsDropdown, "RDX A-Spec Package SUV");
+                    addOption(modelsDropdown, "RDX Tech SUV ");
+                    break;
+                case "Alfa Romeo":
+                    addOption(modelsDropdown, "Giulia Sedan");
+                    addOption(modelsDropdown, "Giulia Sprint Sedan");
+                    addOption(modelsDropdown, "Giulia Veloce Sedan");
+                    addOption(modelsDropdown, "Giulietta Hatchback");
+                    addOption(modelsDropdown, "Mito Super hatchback");
+                    addOption(modelsDropdown, "Stelvio Super SUV");
+                    addOption(modelsDropdown, "Stelvio SUV");
+                    addOption(modelsDropdown, "Stelvio Ti SUV");
+                    addOption(modelsDropdown, "Tonale Veloce SUV");
+                    break;
+                case "Aston Martin":
+                    addOption(modelsDropdown, "Cygnet Hatchback");
+                    addOption(modelsDropdown, "DB11 Coupe");
+                    addOption(modelsDropdown, "DB11 Volante Convertible");
+                    addOption(modelsDropdown, "DB9 Coupe");
+                    addOption(modelsDropdown, "DBX Base SUV");
+                    addOption(modelsDropdown, "DBX V8 AWD SUV");
+                    addOption(modelsDropdown, "Vanquish 2+2 Coupe");
+                    addOption(modelsDropdown, "Vantage Coupe");
+                    addOption(modelsDropdown, "Virage Coupe");
+                    break; 
+                case "Audi":
+                    addOption(modelsDropdown, "A1 Ambition Hatchback");
+                    addOption(modelsDropdown, "A1 Sportback Hatchback");
+                    addOption(modelsDropdown, "A1 Sportback S Line Hatchback");
+                    addOption(modelsDropdown, "A3 Ambition Convertible");
+                    addOption(modelsDropdown, "A3 Attraction Convertible");
+                    addOption(modelsDropdown, "A3 Premium Convertible");
+                    addOption(modelsDropdown, "Audi A4");
+                    addOption(modelsDropdown, "SQ7 Premium Plus SUV");
+                    addOption(modelsDropdown, "TT Convertible");
+                    break;  
+                case "BMW":
+                    addOption(modelsDropdown, "X1 xLine SUV");
+                    addOption(modelsDropdown, "X1 xLine SUV");
+                    addOption(modelsDropdown, "X2 M Sport SUV");
+                    addOption(modelsDropdown, "X3 30i xLine SUV");
+                    addOption(modelsDropdown, "X3 M40i SUV");
+                    addOption(modelsDropdown, "X3 M Sport SUV");
+                    addOption(modelsDropdown, "X4 M Sport SUV");
+                    addOption(modelsDropdown, "X5 Plug-in Hybrid Base SUV");
+                    addOption(modelsDropdown, "X6 M Competition SUV");
+                    addOption(modelsDropdown,"BMW 3 Series");
+                    break;          
+                case "Buick":
+                    addOption(modelsDropdown, "Cascada Premium Convertible");
+                    addOption(modelsDropdown, "Enclave Avenir SUV");
+                    addOption(modelsDropdown, "Encore GX Select SUV");
+                    addOption(modelsDropdown, "Encore GX Sport Touring");
+                    addOption(modelsDropdown, "Envision Avenir SUV");
+                    addOption(modelsDropdown, "LaCrosse Essence Sedan");
+                    addOption(modelsDropdown, "Regal CXL Sedan");
+                    addOption(modelsDropdown, "Regal Sport Touring Sedan");
+                    addOption(modelsDropdown, "Verano Leather Sedan");
+                    break;
+                case "Chevrolet":
+                    addOption(modelsDropdown, "Chevrolet Malibu");
+                    addOption(modelsDropdown, "Malibu ECO 1SA Sedan");
+                    addOption(modelsDropdown, "Spark LS Hatchback");
+                    addOption(modelsDropdown, "Sonic LT RS Hatchback");
+                    addOption(modelsDropdown, "Impala 2LT Sedan");
+                    addOption(modelsDropdown, "Equinox LT SUV");
+                    addOption(modelsDropdown, "Cruze LTZ Hatchback");
+                    addOption(modelsDropdown, "Corvette Z06 Coupe");
+                    addOption(modelsDropdown, "Corvette Stingray 3LT Coupe");
+                    addOption(modelsDropdown, "Lanos");
+                    break;    
+                case "Dodge":
+                    addOption(modelsDropdown, "Challenger GT Coupe");
+                    addOption(modelsDropdown, "Challenger SRT Coupe");
+                    addOption(modelsDropdown, "Challenger SXT Coupe");
+                    addOption(modelsDropdown, "Charger Dub Sedan");
+                    addOption(modelsDropdown, "Charger GT Sedan");
+                    break;     
+                case "Fiat":
+                    addOption(modelsDropdown, "500c Lounge Convertible");
+                    addOption(modelsDropdown, "500e Electric Hatchback");
+                    addOption(modelsDropdown, "500L Lounge Mini Mpv");
+                    addOption(modelsDropdown, "Panda Cross SUV");
+                    addOption(modelsDropdown, "Panda Lounge Hatchback");
+                    addOption(modelsDropdown, "Qubo Easy Mini MPV");
+                    addOption(modelsDropdown, "Tipo Easy Sedan");
+                    addOption(modelsDropdown, "Tipo Life Hatchback");
+                    addOption(modelsDropdown, "Tipo Lounge Hatchback");
+                    addOption(modelsDropdown,"Tipo SW Cross Wagon");
+                break;
+                case "Ford":
+                    addOption(modelsDropdown, "F-150 XL SuperCrew Pickup");
+                    addOption(modelsDropdown, "F 150 XLT Pickup");
+                    addOption(modelsDropdown, "Fiesta Active X MHEV Hatchback");
+                    addOption(modelsDropdown, "Fiesta Sport Hatchback");
+                    addOption(modelsDropdown, "Fusion");
+                    addOption(modelsDropdown, "Focus");
+                    addOption(modelsDropdown, "Escape");
+                    addOption(modelsDropdown, "Focus ST Hatchback");
+                    addOption(modelsDropdown, "Grand C-Max Titanium Mini MPV");
+                    addOption(modelsDropdown, "Ford Mustang");
+                    addOption(modelsDropdown, "Mustang GT Coupe");
+                    addOption(modelsDropdown, "Mustang GT Premium Convertible");
+                    addOption(modelsDropdown,"S-Max ST Line Mini MPV");
+                break; 
+                case "Honda":
+                    addOption(modelsDropdown, "Honda Accord");
+                    addOption(modelsDropdown, "Accord EX Sedan");
+                    addOption(modelsDropdown, "Accord Hybrid Sedan");
+                    addOption(modelsDropdown, "City V Sedan");
+                    addOption(modelsDropdown, "Civic Hatchback Sport");
+                    addOption(modelsDropdown, "Civic LX Coupe");
+                    addOption(modelsDropdown, "Civic Si Coupe Si Coupe");
+                    addOption(modelsDropdown, "Civic Type-R Hatchback");
+                    addOption(modelsDropdown, "CR-V EX-L SUV");
+                    addOption(modelsDropdown,"Passport Sport SUV");
+                break;
+                case "Hyundai":
+                    addOption(modelsDropdown, "Accent GLS Sedan ");
+                    addOption(modelsDropdown, "Elantra GT Hatchback");
+                    addOption(modelsDropdown, "Elantra Sport Sedan");
+                    addOption(modelsDropdown, "i20 N-Performance Hatchback");
+                    addOption(modelsDropdown, "i20 Sport Hatchback");
+                    addOption(modelsDropdown, "i30 Fastback Feel Hatchback");
+                    addOption(modelsDropdown, "i30 Techno Hatchback");
+                    addOption(modelsDropdown, "Hyundai Sonata");
+                    addOption(modelsDropdown, "Hyundai Sonata SEL Plus Sedan");
+                    addOption(modelsDropdown,"Hyundai Tucson Limited SUV");
+                break;
+                case "Kia":
+                    addOption(modelsDropdown, "Kia Carens Lounge Mini MPV");
+                    addOption(modelsDropdown, "Kia Carnival SX Prestige Minivan");
+                    addOption(modelsDropdown, "Kia Ceed SW More Wagon");
+                    addOption(modelsDropdown, "Kia e-Niro More SUV");
+                    addOption(modelsDropdown, "Kia Forte GT Sedan");
+                    addOption(modelsDropdown, "Kia Niro EV EX Hatchback");
+                    addOption(modelsDropdown, "Kia Niro Plug-in Hybrid Sense SUV");
+                    addOption(modelsDropdown, "Kia Optima");
+                    addOption(modelsDropdown, "Kia Optima Hybrid Sedan");
+                    addOption(modelsDropdown,"Kia Sportage GT Line SUV");
+                break;
+                case "Lamborghini":
+                    addOption(modelsDropdown, "Lamborghini Huracan 580 Coupe");
+                    addOption(modelsDropdown, "Lamborghini Huracan Coupe");
+                    addOption(modelsDropdown, "Lamborghini Huracan LP 610 4 Coupe");
+                    addOption(modelsDropdown, "Lamborghini Urus SUV");
+                break;
+                case "Lexus":
+                    addOption(modelsDropdown, "Lexus CT 200h Hybrid Hatchback ");
+                    addOption(modelsDropdown, "Lexus CT Executive Hatchback");
+                    addOption(modelsDropdown, "Lexus CT Executive Line Hatchback");
+                    addOption(modelsDropdown, "Lexus ES 350 F Sport Sedan");
+                    addOption(modelsDropdown, "Lexus GS F Sedan");
+                    addOption(modelsDropdown, "Lexus GX 460 SUV");
+                    addOption(modelsDropdown, "Lexus IS 300 Sedan");
+                    addOption(modelsDropdown, "Lexus IS 350C Convertible");
+                    addOption(modelsDropdown, "Lexus IS 350 F Sport Sedan");
+                    addOption(modelsDropdown,"Lexus NX 200t SUV");
+                break;
+                case "Mazda":
+                    addOption(modelsDropdown, "Mazda CX-3 Skycruise SUV");
+                    addOption(modelsDropdown, "Mazda CX-3 Skydrive SUV");
+                    addOption(modelsDropdown, "Mazda CX-5 Grand Touring 4wd SUV");
+                    addOption(modelsDropdown, "Mazda CX-5 Sport SUV");
+                    addOption(modelsDropdown, "Mazda CX-5 S Premium Plus SUV");
+                    addOption(modelsDropdown, "Mazda CX-9 Touring SUV");
+                    addOption(modelsDropdown, "Mazda Pulse Edition Hatchback");
+                    addOption(modelsDropdown, "Mazda Miata MX-5 Grand Touring PRHT");
+                    addOption(modelsDropdown, "Mazda MX-5 RF Club Targa");
+                    addOption(modelsDropdown,"Mazda Tribute Hybrid SUV ");
+                break;
+                case "Mercedes-Benz":
+                addOption(modelsDropdown, "Mercedes-Benz A Class Hatchback");
+                addOption(modelsDropdown, "Mercedes-Benz AMG GT 4-Door Coupe 43");
+                addOption(modelsDropdown, "Mercedes-Benz AMG GT Coupe");
+                addOption(modelsDropdown, "Mercedes-Benz B-Class Electric Drive-MPV");
+                addOption(modelsDropdown, "Mercedes-Benz C Class 43 AMG");
+                addOption(modelsDropdown, "Mercedes-Benz C-Class ANG Line Conertible");
+                addOption(modelsDropdown, "Mercedes-Benz EQB 300 SUV");
+                addOption(modelsDropdown, "Mercedes-Benz G-Class 550 SUV");
+                addOption(modelsDropdown, "Mercedes-Benz GLA AMG 45 S SUV");
+                addOption(modelsDropdown,"Mercedes-Benz GLC AMG Line SUV");
+            break;
+            
+            case "Mini":
+                addOption(modelsDropdown, "MINI Clubman John Cooper Works Wagon");
+                addOption(modelsDropdown, "MINI Convertible Cooper Signature");
+                addOption(modelsDropdown, "MINI Cooper 3 door Hatchback");
+                addOption(modelsDropdown, "MINI Cooper 5 Door Hatchback");
+                addOption(modelsDropdown, "Mini Cooper Convertible Jcw Signature");
+                addOption(modelsDropdown, "MINI Cooper Hatchback");
+                addOption(modelsDropdown, "MINI Cooper Paceman S SUV");
+                addOption(modelsDropdown, "MINI Cooper Signature Convertible");
+                addOption(modelsDropdown, "MINI Countryman Hatchback");
+                addOption(modelsDropdown,"MINI Hardtop 2 Door Cooper Signature");
+            break;
+            case "Nissan":
+                addOption(modelsDropdown, "Nissan 370Z Nismo Coupe");
+                addOption(modelsDropdown, "Nissan Altima SL Sedan");
+                addOption(modelsDropdown, "Nissan Ariya EV Evolve SUV");
+                addOption(modelsDropdown, "Nissan Armada SE SUV");
+                addOption(modelsDropdown, "Nissan Juke Acenta SUV");
+                addOption(modelsDropdown, "Nissan Juke Hybrid N-Design SUV");
+                addOption(modelsDropdown, "Nissan Leaf SL Electric Hatchback");
+                addOption(modelsDropdown, "Nissan Maxima Platinum Sedan");
+                addOption(modelsDropdown, "Nissan Maxima SV Sedan");
+                addOption(modelsDropdown,"Nissan Z Performance Coupe");
+            break;
+            case "Subaru":
+                addOption(modelsDropdown, "Subaru Ascent Limited SUV");
+                addOption(modelsDropdown, "Subaru BRZ Limited Coupe");
+                addOption(modelsDropdown, "Subaru BRZ Sport Premium Coupe");
+                addOption(modelsDropdown, "Subaru Crosstrek Hybrid SUV");
+                addOption(modelsDropdown, "Subaru Forester Luxury SUV");
+                addOption(modelsDropdown, "Subaru Impreza Hatchback");
+                addOption(modelsDropdown, "Subaru Legacy Premium Sedan");
+                addOption(modelsDropdown, "Subaru Outback Premium SUV");
+                addOption(modelsDropdown, "Subaru Outback Premium Wagon");
+                addOption(modelsDropdown,"Subaru XV Crossover SUV");
+            break;
+            case "Tesla":
+                addOption(modelsDropdown, "Tesla Model 3");
+                addOption(modelsDropdown, "Tesla Model S");
+                addOption(modelsDropdown, "Tesla Model Y");
+                addOption(modelsDropdown, "Tesla Model z");
+                addOption(modelsDropdown, "Tesla Model X");
+            break;
+            case "Toyota":
+                addOption(modelsDropdown, "Toyota 4Runner Limited SUV");
+                addOption(modelsDropdown, "Toyota 86 Coupe");
+                addOption(modelsDropdown, "Toyota Auris Dynamic Hatchback");
+                addOption(modelsDropdown, "Toyota Avalon XLE Sedan");
+                addOption(modelsDropdown, "Toyota Camry Hybrid Sedan");
+                addOption(modelsDropdown, "Toyota Camry SE Auto Sedan");
+                addOption(modelsDropdown, "Toyota Camry XLE Hybrid Sedan");
+                addOption(modelsDropdown, "Toyota C-HR C Show SUV");
+                addOption(modelsDropdown, "Toyota Corolla Cross Dynamic SUV");
+                addOption(modelsDropdown, "Toyota Corolla Premium Sedan");
+            break;
+            case "Volkswagen":
+                addOption(modelsDropdown, "Volkswagen Atlas SE SUV");
+                addOption(modelsDropdown, "Volkswagen Beetle Dune Hatchback");
+                addOption(modelsDropdown, "Volkswagen Beetle S Convertible");
+                addOption(modelsDropdown, "Volkswagen Cross UP Hatchback");
+                addOption(modelsDropdown, "Volkswagen EOS Komfort Convertible");
+                addOption(modelsDropdown, "Volkswagen Golf Alltrack Wagon");
+                addOption(modelsDropdown, "Volkswagen Golf GTI Hatchback");
+                addOption(modelsDropdown, "Volkswagen Golf GTI SE Hatchback");
+                addOption(modelsDropdown, "Volkswagen Golf Variant R Wagon");
+                addOption(modelsDropdown, "Volkswagen Jetta SE Sedan");
+            break;
+                // Add more cases for other makes if needed
+                default:
+                    addOption(modelsDropdown, "Other Model");
+            }
+        }
+
+        // Helper function to add an option to a dropdown
+        function addOption(dropdown, value) {
+            var option = document.createElement("option");
+            option.text = value;
+            option.value = value;
+            dropdown.add(option);
+        }
+
+       
+        function checkLoginAndReserve(make, model) {
+            var isLoggedIn = true; // Replace with actual login check
+            if (isLoggedIn) {
+                searchAndShowAvailableCars(make, model);
+            } else {
+                // User is not logged in, redirect to the login page
+                window.location.href = 'login.html';
+            }
+        }
+
+        function searchAndShowAvailableCars(make, model) {
+            // Make an Ajax request to get the list of available cars
+            $.ajax({
+                url: 'http://localhost:5000/availableCars?make=' + encodeURIComponent(make) + '&model=' + encodeURIComponent(model),
+                method: 'GET',
+                success: function (response) {
+                    // Update the UI to show available cars as buttons
+                    updateAvailableCarsUI(response);
+                },
+                error: function (xhr, status, error) {
+                    console.log('Error:', xhr.responseText);
+                    alert('Error while fetching available cars. Please try again later.');
+                },
+            });
+        }
+
+        function updateAvailableCarsUI(availableCars) {
+            const availableCarsList = document.getElementById('availableCarsList');
+            availableCarsList.innerHTML = ''; // Clear existing content
+
+            // Filter cars by make and model
+            const filteredCars = availableCars.filter(car => car.make === selectedMake && car.model === selectedModel);
+            
+            // Iterate through available cars and create buttons
+            filteredCars.forEach(car => {
+                const carButton = document.createElement('button');
+                carButton.className = 'btn btn-secondary mr-2 mb-2';
+                carButton.textContent = `${car.make} ${car.model}`;
+
+                // Add an event listener to the button to show reservation info when clicked
+                carButton.addEventListener('click', function () {
+                    showReservationInfoSection(car);
+                });
+
+                availableCarsList.appendChild(carButton);
+            });
+
+            // Show the available cars section
+            document.getElementById('availableCarsSection').style.display = 'block';
+        }
+
+        function showReservationInfoSection(selectedCar) {
+            // Set the selected car information in the reservation form
+            document.getElementById('model').value = selectedCar.model; // Assuming 'model' is the ID of the model input
+            // ... (populate other relevant fields)
+
+            // Show the reservation information section
+            document.getElementById('reservationInfoSection').style.display.submit(); ;
+        }
+    </script>
+
 </head>
 
 <body>
@@ -81,98 +442,132 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header">
-        <h1 class="display-3 text-uppercase text-white mb-3">Service</h1>
+        <h1 class="display-3 text-uppercase text-white mb-3">Reserve now</h1>
         <div class="d-inline-flex text-white">
-            <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
+            <h6 class="text-uppercase m-0"><a class="text-white" href="index.html">Home</a></h6>
             <h6 class="text-body m-0 px-3">/</h6>
-            <h6 class="text-uppercase text-body m-0">Service</h6>
+            <h6 class="text-uppercase text-body m-0">Reserve now</h6>
         </div>
     </div>
     <!-- Page Header Start -->
-    
 
-    <!-- Services Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">Our Services</h1>
+
+    <!-- Reservation Form Start -->
+    <div class="container my-4">
+        <form id="reservationForm">
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-taxi text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">01</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Car Rental</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="makeDropdown">Select Car Make:</label>
+                        <select class="form-control" id="makeDropdown" onchange="updateModels()">
+                            <option value="" disabled selected>Select by make</option>
+                                    <option value="Abarth">Abarth</option>
+                                    <option value="Acura">Acura</option>
+                                    <option value="Alfa Romeo">Alfa Romeo</option>
+                                    <option value="Aston Martin">Aston Martin</option>
+                                    <option value="Audi">Audi</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="Buick">Buick</option>
+                                    <option value="Chevrolet">Chevrolet</option>
+                                    <option value="Dodge">Dodge</option>
+                                    <option value="Fiat">Fiat</option>
+                                    <option value="Ford">Ford</option>
+                                    <option value="Honda">Honda</option>
+                                    <option value="Hyundai">Hyundai</option>
+                                    <option value="Kia">Kia</option>
+                                    <option value="Lamborghini">Lamborghini</option>
+                                    <option value="Lexus">Lexus</option>
+                                    <option value="Mazda">Mazda</option>
+                                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                    <option value="Mini">Mini</option>
+                                    <option value="Nissan">Nissan</option>
+                                    <option value="Subaru">Subaru</option>
+                                    <option value="Tesla">Tesla</option>
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Volkswagen">Volkswagen</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item  d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-money-check-alt text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">02</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Car Financing</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-car text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">03</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Car Inspection</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-cogs text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">04</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Auto Repairing</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-spray-can text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">05</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Auto Painting</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-2">
-                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="d-flex align-items-center justify-content-center bg-primary ml-n4" style="width: 80px; height: 80px;">
-                                <i class="fa fa-2x fa-pump-soap text-secondary"></i>
-                            </div>
-                            <h1 class="display-2 text-white mt-n2 m-0">06</h1>
-                        </div>
-                        <h4 class="text-uppercase mb-3">Auto Cleaning</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit sea sed</p>
+                <div class="col-md-6 mt-3 mt-md-0">
+                    <div class="form-group">
+                        <label for="model">Select Car Model:</label>
+                        <select id="model" name="model" required>
+                            <option value="" disabled selected>Select by model</option>
+                        </select>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Services End -->
 
+            <!-- Search and Reserve Button -->
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <button type="button" class="btn btn-primary" onclick="checkLoginAndReserve()">Search and Reserve</button>
+                </div>
+            </div>
+
+            <!-- Available Cars Section (Initially Hidden) -->
+            <div id="availableCarsSection" style="display: none;">
+                <h3>Available Cars</h3>
+                <div id="availableCarsList" class="row">
+                    <!-- Available cars will be dynamically populated here as buttons -->
+                    <!-- Example buttons (replace with dynamically generated buttons) -->
+                    <div class="col-md-4">
+                        <button class="btn btn-secondary btn-car" data-car-id="1">Car 1</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-secondary btn-car" data-car-id="2">Car 2</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-secondary btn-car" data-car-id="3">Car 3</button>
+                    </div>
+                    <!-- Add more buttons dynamically -->
+                </div>
+            </div>
+
+
+            <!-- Reservation Information Section (Initially Hidden) -->
+            <div id="reservationInfoSection" style="display: none;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="pickupLocation">Pickup Location:</label>
+                            <input type="text" class="form-control" id="pickupLocation" name="pickupLocation" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="destination">Destination:</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="reservationDate">Reservation Date:</label>
+                            <input type="date" class="form-control" id="reservationDate" name="reservationDate" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name:</label>
+                            <input type="text" class="form-control" id="customerName" name="customerName" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="customerEmail">Customer Email:</label>
+                            <input type="email" class="form-control" id="customerEmail" name="customerEmail" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+    <!-- Reservation Form End -->
 
     <!-- Banner Start -->
     <div class="container-fluid py-5">
@@ -315,5 +710,6 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
 
 </html>
