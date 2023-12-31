@@ -26,219 +26,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <script>
-        // Function to dynamically update the models based on the selected make
-        function updateModels() {
-            // Get the selected make
-            var selectedMake = document.getElementById("make").value;
 
-            // Get the models dropdown
-            var modelsDropdown = document.getElementById("model");
-
-            // Clear existing options
-            modelsDropdown.innerHTML = "";
-
-            switch (selectedMake) {
-                case "Abarth":
-                    addOption(modelsDropdown, "124 Spider Convertible ");
-                    addOption(modelsDropdown, "500e Turismo Hatchback ");
-                    addOption(modelsDropdown, "595 Competizione Convertible");
-                    addOption(modelsDropdown, "595 Turismo Convertible ");
-                    addOption(modelsDropdown, "595 Turismo Hatchback");
-                    break;
-                case "Acura":
-                    addOption(modelsDropdown, "ILX Hybrid Sedan");
-                    addOption(modelsDropdown, "ILX Premium Sedan");
-                    addOption(modelsDropdown, "ILX Technology Plus Sedan");
-                    addOption(modelsDropdown, "ILX Tech Plus A Spec Sedan");
-                    addOption(modelsDropdown, "Integra Base Hatchback");
-                    addOption(modelsDropdown, "MDX Adv Ent Package SUV");
-                    addOption(modelsDropdown, "MDX A Spec SUV");
-                    addOption(modelsDropdown, "RDX A-Spec Package SUV");
-                    addOption(modelsDropdown, "RDX Tech SUV ");
-                    break;
-                case "Alfa Romeo":
-                    addOption(modelsDropdown, "Giulia Sedan");
-                    addOption(modelsDropdown, "Giulia Sprint Sedan");
-                    addOption(modelsDropdown, "Giulia Veloce Sedan");
-                    addOption(modelsDropdown, "Giulietta Hatchback");
-                    addOption(modelsDropdown, "Mito Super hatchback");
-                    addOption(modelsDropdown, "Stelvio Super SUV");
-                    addOption(modelsDropdown, "Stelvio SUV");
-                    addOption(modelsDropdown, "Stelvio Ti SUV");
-                    addOption(modelsDropdown, "Tonale Veloce SUV");
-                    break;
-                case "Aston Martin":
-                    addOption(modelsDropdown, "Cygnet Hatchback");
-                    addOption(modelsDropdown, "DB11 Coupe");
-                    addOption(modelsDropdown, "DB11 Volante Convertible");
-                    addOption(modelsDropdown, "DB9 Coupe");
-                    addOption(modelsDropdown, "DBX Base SUV");
-                    addOption(modelsDropdown, "DBX V8 AWD SUV");
-                    addOption(modelsDropdown, "Vanquish 2+2 Coupe");
-                    addOption(modelsDropdown, "Vantage Coupe");
-                    addOption(modelsDropdown, "Virage Coupe");
-                    break; 
-                case "Audi":
-                    addOption(modelsDropdown, "A1 Ambition Hatchback");
-                    addOption(modelsDropdown, "A1 Sportback Hatchback");
-                    addOption(modelsDropdown, "A1 Sportback S Line Hatchback");
-                    addOption(modelsDropdown, "A3 Ambition Convertible");
-                    addOption(modelsDropdown, "A3 Attraction Convertible");
-                    addOption(modelsDropdown, "A3 Premium Convertible");
-                    addOption(modelsDropdown, "Audi A4");
-                    addOption(modelsDropdown, "SQ7 Premium Plus SUV");
-                    addOption(modelsDropdown, "TT Convertible");
-                    break;  
-                case "BMW":
-                    addOption(modelsDropdown, "X1 xLine SUV");
-                    addOption(modelsDropdown, "X1 xLine SUV");
-                    addOption(modelsDropdown, "X2 M Sport SUV");
-                    addOption(modelsDropdown, "X3 30i xLine SUV");
-                    addOption(modelsDropdown, "X3 M40i SUV");
-                    addOption(modelsDropdown, "X3 M Sport SUV");
-                    addOption(modelsDropdown, "X4 M Sport SUV");
-                    addOption(modelsDropdown, "X5 Plug-in Hybrid Base SUV");
-                    addOption(modelsDropdown, "X6 M Competition SUV");
-                    addOption(modelsDropdown,"BMW 3 Series");
-                    break;          
-                case "Buick":
-                    addOption(modelsDropdown, "Cascada Premium Convertible");
-                    addOption(modelsDropdown, "Enclave Avenir SUV");
-                    addOption(modelsDropdown, "Encore GX Select SUV");
-                    addOption(modelsDropdown, "Encore GX Sport Touring");
-                    addOption(modelsDropdown, "Envision Avenir SUV");
-                    addOption(modelsDropdown, "LaCrosse Essence Sedan");
-                    addOption(modelsDropdown, "Regal CXL Sedan");
-                    addOption(modelsDropdown, "Regal Sport Touring Sedan");
-                    addOption(modelsDropdown, "Verano Leather Sedan");
-                    break;
-                case "Chevrolet":
-                    addOption(modelsDropdown, "Chevrolet Malibu");
-                    addOption(modelsDropdown, "Malibu ECO 1SA Sedan");
-                    addOption(modelsDropdown, "Spark LS Hatchback");
-                    addOption(modelsDropdown, "Sonic LT RS Hatchback");
-                    addOption(modelsDropdown, "Impala 2LT Sedan");
-                    addOption(modelsDropdown, "Equinox LT SUV");
-                    addOption(modelsDropdown, "Cruze LTZ Hatchback");
-                    addOption(modelsDropdown, "Corvette Z06 Coupe");
-                    addOption(modelsDropdown, "Corvette Stingray 3LT Coupe");
-                    addOption(modelsDropdown, "Lanos");
-                    break;    
-                case "Dodge":
-                    addOption(modelsDropdown, "Challenger GT Coupe");
-                    addOption(modelsDropdown, "Challenger SRT Coupe");
-                    addOption(modelsDropdown, "Challenger SXT Coupe");
-                    addOption(modelsDropdown, "Charger Dub Sedan");
-                    addOption(modelsDropdown, "Charger GT Sedan");
-                    break;     
-                case "Fiat":
-                    addOption(modelsDropdown, "500c Lounge Convertible");
-                    addOption(modelsDropdown, "500e Electric Hatchback");
-                    addOption(modelsDropdown, "500L Lounge Mini Mpv");
-                    addOption(modelsDropdown, "Panda Cross SUV");
-                    addOption(modelsDropdown, "Panda Lounge Hatchback");
-                    addOption(modelsDropdown, "Qubo Easy Mini MPV");
-                    addOption(modelsDropdown, "Tipo Easy Sedan");
-                    addOption(modelsDropdown, "Tipo Life Hatchback");
-                    addOption(modelsDropdown, "Tipo Lounge Hatchback");
-                    addOption(modelsDropdown,"Tipo SW Cross Wagon");
-                break;
-                case "Ford":
-                    addOption(modelsDropdown, "F-150 XL SuperCrew Pickup");
-                    addOption(modelsDropdown, "F 150 XLT Pickup");
-                    addOption(modelsDropdown, "Fiesta Active X MHEV Hatchback");
-                    addOption(modelsDropdown, "Fiesta Sport Hatchback");
-                    addOption(modelsDropdown, "Fusion");
-                    addOption(modelsDropdown, "Focus");
-                    addOption(modelsDropdown, "Escape");
-                    addOption(modelsDropdown, "Focus ST Hatchback");
-                    addOption(modelsDropdown, "Grand C-Max Titanium Mini MPV");
-                    addOption(modelsDropdown, "Ford Mustang");
-                    addOption(modelsDropdown, "Mustang GT Coupe");
-                    addOption(modelsDropdown, "Mustang GT Premium Convertible");
-                    addOption(modelsDropdown,"S-Max ST Line Mini MPV");
-                break; 
-                case "Honda":
-                    addOption(modelsDropdown, "Honda Accord");
-                    addOption(modelsDropdown, "Accord EX Sedan");
-                    addOption(modelsDropdown, "Accord Hybrid Sedan");
-                    addOption(modelsDropdown, "City V Sedan");
-                    addOption(modelsDropdown, "Civic Hatchback Sport");
-                    addOption(modelsDropdown, "Civic LX Coupe");
-                    addOption(modelsDropdown, "Civic Si Coupe Si Coupe");
-                    addOption(modelsDropdown, "Civic Type-R Hatchback");
-                    addOption(modelsDropdown, "CR-V EX-L SUV");
-                    addOption(modelsDropdown,"Passport Sport SUV");
-                break;
-                case "Hyundai":
-                    addOption(modelsDropdown, "Accent GLS Sedan ");
-                    addOption(modelsDropdown, "Elantra GT Hatchback");
-                    addOption(modelsDropdown, "Elantra Sport Sedan");
-                    addOption(modelsDropdown, "i20 N-Performance Hatchback");
-                    addOption(modelsDropdown, "i20 Sport Hatchback");
-                    addOption(modelsDropdown, "i30 Fastback Feel Hatchback");
-                    addOption(modelsDropdown, "i30 Techno Hatchback");
-                    addOption(modelsDropdown, "Hyundai Sonata");
-                    addOption(modelsDropdown, "Hyundai Sonata SEL Plus Sedan");
-                    addOption(modelsDropdown,"Hyundai Tucson Limited SUV");
-                break;
-                case "Kia":
-                    addOption(modelsDropdown, "Kia Carens Lounge Mini MPV");
-                    addOption(modelsDropdown, "Kia Carnival SX Prestige Minivan");
-                    addOption(modelsDropdown, "Kia Ceed SW More Wagon");
-                    addOption(modelsDropdown, "Kia e-Niro More SUV");
-                    addOption(modelsDropdown, "Kia Forte GT Sedan");
-                    addOption(modelsDropdown, "Kia Niro EV EX Hatchback");
-                    addOption(modelsDropdown, "Kia Niro Plug-in Hybrid Sense SUV");
-                    addOption(modelsDropdown, "Kia Optima");
-                    addOption(modelsDropdown, "Kia Optima Hybrid Sedan");
-                    addOption(modelsDropdown,"Kia Sportage GT Line SUV");
-                break;
-                case "Lamborghini":
-                    addOption(modelsDropdown, "Lamborghini Huracan 580 Coupe");
-                    addOption(modelsDropdown, "Lamborghini Huracan Coupe");
-                    addOption(modelsDropdown, "Lamborghini Huracan LP 610 4 Coupe");
-                    addOption(modelsDropdown, "Lamborghini Urus SUV");
-                break;
-                case "Lexus":
-                    addOption(modelsDropdown, "Lexus CT 200h Hybrid Hatchback ");
-                    addOption(modelsDropdown, "Lexus CT Executive Hatchback");
-                    addOption(modelsDropdown, "Lexus CT Executive Line Hatchback");
-                    addOption(modelsDropdown, "Lexus ES 350 F Sport Sedan");
-                    addOption(modelsDropdown, "Lexus GS F Sedan");
-                    addOption(modelsDropdown, "Lexus GX 460 SUV");
-                    addOption(modelsDropdown, "Lexus IS 300 Sedan");
-                    addOption(modelsDropdown, "Lexus IS 350C Convertible");
-                    addOption(modelsDropdown, "Lexus IS 350 F Sport Sedan");
-                    addOption(modelsDropdown,"Lexus NX 200t SUV");
-                break;
-                case "Mazda":
-                    addOption(modelsDropdown, "Mazda CX-3 Skycruise SUV");
-                    addOption(modelsDropdown, "Mazda CX-3 Skydrive SUV");
-                    addOption(modelsDropdown, "Mazda CX-5 Grand Touring 4wd SUV");
-                    addOption(modelsDropdown, "Mazda CX-5 Sport SUV");
-                    addOption(modelsDropdown, "Mazda CX-5 S Premium Plus SUV");
-                    addOption(modelsDropdown, "Mazda CX-9 Touring SUV");
-                    addOption(modelsDropdown, "Mazda Pulse Edition Hatchback");
-                    addOption(modelsDropdown, "Mazda Miata MX-5 Grand Touring PRHT");
-                    addOption(modelsDropdown, "Mazda MX-5 RF Club Targa");
-                    addOption(modelsDropdown,"Mazda Tribute Hybrid SUV ");
-                break;
-                // Add more cases for other makes if needed
-                default:
-                    addOption(modelsDropdown, "Other Model");
-            }
-        }
-
-        // Helper function to add an option to a dropdown
-        function addOption(dropdown, value) {
-            var option = document.createElement("option");
-            option.text = value;
-            option.value = value;
-            dropdown.add(option);
-        }
-    </script>
 </head>
 
 <body>
@@ -281,13 +69,14 @@
 </div>
     <div class="container mx-auto">
         <h1>Register a New Car</h1>
-        <form id="carForm" action="process_car_registration.php" method="post" enctype="multipart/form-data">
+        <form id="carForm" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <!-- Make -->
                     <div class="form-group">
                         <label for="make">Make:</label>
-                        <select id="make" name="make" onchange="updateModels()" class="form-control" required>
+                        <select id="make" name="make" oninput="updateModels()" class="form-control" required>
+                            <option value="" disabled selected>Choose car's make</option>
                                 <option value="Abarth">Abarth</option>
                                 <option value="Acura">Acura</option>
                                 <option value="Alfa Romeo">Alfa Romeo</option>
@@ -319,7 +108,7 @@
                     <div class="form-group">
                         <label for="model">Model:</label>
                         <select id="model" name="model"  required>
-                            <!-- Options -->
+                            <option value="" disabled selected>Choose car's make first</option>
                         </select>
                     </div>
     
@@ -379,7 +168,7 @@
                     <!-- Upload Photo -->
                     <div class="form-group">
                         <label for="photo">Upload Photo:</label>
-                        <input type="file" id="photo" name="photo" accept="image/*" class="form-control" required>
+                        <input type="file" id="photo" name="photo"  class="form-control" >
                     </div>
                 </div>
             </div>
@@ -403,36 +192,8 @@
     
         </form>
     </div>
-
 </body>
-<script>
-    $(document).ready(function () {
-        $("#carForm").submit(function (event) {
-            event.preventDefault(); // prevent the default form submission
-        
-            // Convert form data to a plain JavaScript object
-            var formData = {};
-            $(this).serializeArray().forEach(function(item) {
-                formData[item.name] = item.value;
-            });
-        
-            // Make an Ajax request
-            $.ajax({
-                url: 'http://localhost:5000/car/create',
-                method: 'POST',
-                contentType: 'application/json',  // Set content type to JSON
-                data: JSON.stringify(formData),  // Convert form data to JSON string
-                success: function (response) {
-                    console.log('Success:', response);
-                },
-                error: function (error) {
-                    // Handle errors
-                    console.log('Error:', error);
-                },
-            });
-        });
-        
-    });
-</script>
+
+<script src="js/carReg.js"></script>
 
 </html>

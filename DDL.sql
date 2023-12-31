@@ -16,7 +16,7 @@ Create Table Car(
     seatNums INT,
     transmissionType VARCHAR(255),
     make VARCHAR(255),
-    photoID INT UNIQUE,
+    photoID VARCHAR(255),
     status VARCHAR(255),
     plateID INT UNIQUE,
     pricePerDay Float,
