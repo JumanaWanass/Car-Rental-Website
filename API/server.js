@@ -3,8 +3,27 @@ const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path')
+const session = require('express-session');
 
 const app = express();  //we're hosting
+
+// Body parser
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+// Setup session
+app.use(session({
+  secret: process.env.SECRET,
+  cookie: {
+    sameSite: true
+  },
+  resave: false, // Set to false to prevent unnecessary session updates
+  saveUninitialized: false // Set to false to prevent saving uninitialized sessions
+}));
+
+// CORS
+app.use(cors());
+
 
 // Set up Multer storage
 const storage = multer.diskStorage({
@@ -33,13 +52,6 @@ const imageFilter = function (req, file, cb) {
 
 const upload = multer({ storage: storage, fileFilter: imageFilter, limits: {fileSize: 1024 * 1024} });
 
-// Body parser
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
-
-// CORS
-app.use(cors());
-
 // Routers
 const OfficeRouter = require('./routers/OfficeRouter');
 const CarRouter = require('./routers/CarRouter');
@@ -49,6 +61,23 @@ const ReservationRouter = require('./routers/ReservationRouter');
 
 app.get('/', (req, res) => {
   res.status(200).json({ hi: 'welcome' });
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.status(200).send('Logout successful');
+    }
+  });
+});
+
+
+app.get('/checkSession', (req, res) => {
+  const sessionExists = req.session.auth ? true : false;
+  res.json({ sessionExists });
 });
 
 // Routers

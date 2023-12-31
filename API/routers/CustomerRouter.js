@@ -8,5 +8,6 @@ router.get('/search', CustomerController.getByAttributes);
 router.post('/', CustomerController.createCustomer);
 router.delete('/attributes', CustomerController.deleteByAttributes);
 router.put('/attributes', CustomerController.updateByAttributes);
+router.post('/login', CustomerController.login);
 
 module.exports = router;
