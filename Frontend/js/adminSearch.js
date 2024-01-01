@@ -2,7 +2,6 @@ $(document).ready(function() {
     fetchMakes();
 
     $("form").submit(function(e) {
-<<<<<<< HEAD
       e.preventDefault();
       var formData = {};
             $(this).serializeArray().forEach(function(item) {
@@ -22,34 +21,6 @@ $(document).ready(function() {
                 },
       });
     });
-=======
-        e.preventDefault();
-        var formData = {};
-        $(this).serializeArray().forEach(function(item) {
-         formData[item.name] = item.value;
-        });
-       
-        // Remove empty fields
-        for (var key in formData) {
-         if (formData[key] === "") {
-           delete formData[key];
-         }
-        }
-       
-        $.ajax({
-         method: "GET",
-         url: "http://localhost:5000/admin/search",
-         data: formData, // Send form data as query parameters
-         success: function (response) {
-           console.log('Success:', response);
-         },
-         error: function (error) {
-           console.log('Error:', error);
-         },
-        });
-       });
-       
->>>>>>> e8b0f53322210f56986b3bf3775ff7e9142d92b5
 });
 
 
