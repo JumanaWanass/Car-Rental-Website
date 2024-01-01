@@ -9,6 +9,8 @@ module.exports = function (upload) {
     router.delete('/delete', CarController.deleteByAttributes);
     router.put('/search', CarController.updateByAttributes);
     router.post('/changeCarStatus', CarController.changeStat);
+    router.get('/make-model-combinations', CarController.getUniqueMakeModelCombinations); // New endpoint
+
     // router.post('/formPost',CarController.testPrint);
     // router.get('/form',CarController.testPrint);
     return router;

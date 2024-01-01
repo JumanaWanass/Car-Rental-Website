@@ -109,16 +109,11 @@ class Car
         );
         return newCar.save();
     }
-    /* Example usage:
-    const carAttributes = {
-    color: 'Red',
-    transmissionType: 'Automatic',
-    seatNums: 5
-};
-
-Car.findByAttributes(carAttributes)
-    .then(result => console.log(result));
-    */
+    static findUniqueMakeModelCombinations() 
+    {
+        const sql = 'SELECT DISTINCT make, model FROM Car';
+        return db.execute(sql);
+    }
 
 }
 module.exports = Car;
