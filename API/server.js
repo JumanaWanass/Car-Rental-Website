@@ -15,10 +15,10 @@ app.use(express.json());
 app.use(session({
   secret: process.env.SECRET,
   cookie: {
-    sameSite: true
+    sameSite: true,
   },
-  resave: false, // Set to false to prevent unnecessary session updates
-  saveUninitialized: false // Set to false to prevent saving uninitialized sessions
+  resave: false,
+  saveUninitialized: true
 }));
 
 // CORS
@@ -62,22 +62,18 @@ const adminRouter = require('./routers/adminSearchRouter');
 const reportRouter = require('./routers/reportsRouter'); 
 
 app.get('/', (req, res) => {
+  req.session.auth = true;
   res.status(200).json({ hi: 'welcome' });
 });
 
 app.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error('Error destroying session:', err);
-      res.status(500).send('Internal Server Error');
-    } else {
-      res.status(200).send('Logout successful');
-    }
-  });
+  req.session.auth = false;
+  res.status(200).json({message:"Logout"})
 });
 
 
 app.get('/checkSession', (req, res) => {
+  console.log(req.session);
   const sessionExists = req.session.auth ? true : false;
   res.json({ sessionExists });
 });

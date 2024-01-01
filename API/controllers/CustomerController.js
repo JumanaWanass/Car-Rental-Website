@@ -96,10 +96,12 @@ exports.login = async (req, res) => {
           const match = await bcrypt.compare(data.Password, result[0].Password);
           if (match)
           {
-            console.log(result[0].custID);
+            console.log("before", req.session);
+
             req.session.userID = result[0].custID;
             req.session.admin = false;
             req.session.auth = true;
+            console.log(req.session);
             res.status(200).json({message: "Logged in success"});
           }
           else
