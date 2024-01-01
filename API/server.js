@@ -58,6 +58,8 @@ const CarRouter = require('./routers/CarRouter');
 const CustomerRouter = require('./routers/CustomerRouter');
 const EmployeeRouter = require('./routers/EmployeeRouter');
 const ReservationRouter = require('./routers/ReservationRouter'); 
+const adminRouter = require('./routers/adminSearchRouter'); 
+const reportRouter = require('./routers/reportsRouter'); 
 
 app.get('/', (req, res) => {
   res.status(200).json({ hi: 'welcome' });
@@ -86,6 +88,8 @@ app.use('/car', CarRouter(upload));
 app.use('/customer', CustomerRouter);
 app.use('/employee', EmployeeRouter);
 app.use('/reservation', ReservationRouter); 
+app.use('/admin', adminRouter); 
+app.use('/report', reportRouter); 
 
 app.listen(5000, () => console.log(`Server running on http://localhost:5000/`));
 

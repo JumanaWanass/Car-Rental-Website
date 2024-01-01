@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const CarController = require('../controllers/CarController');
-const multer = require('multer');
 
 module.exports = function (upload) {
     router.get('/', CarController.getAll);
