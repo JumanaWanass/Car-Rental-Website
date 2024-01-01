@@ -1,24 +1,23 @@
 $(document).ready(function () {
-    $("#report5Form").submit(function (event) {
-      event.preventDefault(); // prevent the default form submission
-  
-      // Create FormData object
-      var formData = new FormData(this);
-  
-      // Make an Ajax request
-      $.ajax({
-        url: 'http://localhost:5000/report/5',
-        method: 'GET',
-        processData: false, // Prevent jQuery from processing the data
-        contentType: false, // Let the server specify the content type
-        data: formData,
-        success: function (response) {
-          console.log('Success:', response);
-        },
-        error: function (error) {
-          // Handle errors
-          console.log('Error:', error);
-        },
-      });
+  $("#report5Form").submit(function (event) {
+    event.preventDefault(); // prevent the default form submission
+
+    var formData = {};
+          $(this).serializeArray().forEach(function(item) {
+              formData[item.name] = item.value;
+          });
+
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:5000/report/5',
+      data: JSON.stringify(formData),  // Convert form data to JSON string
+              success: function (response) {
+                  console.log('Success:', response);
+              },
+              error: function (error) {
+                  // Handle errors
+                  console.log('Error:', error);
+              },
     });
   });
+});

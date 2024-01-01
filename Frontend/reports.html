@@ -48,9 +48,6 @@
                 <a href="" class="navbar-brand">
                     <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
                 </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a href="admin.html" class="nav-item nav-link">Home</a>
@@ -61,6 +58,7 @@
             </nav>
         </div>
     </div>
+    
     <!-- Navbar End -->
 
     <div class="container-fluid bg-white pt-3 px-lg-5">
@@ -80,17 +78,8 @@
                         <h1 class="display-2 text-white1 mt-n2 m-0">01</h1>
                     </div>
                     <h4 class="text-uppercase mb-3">All reservations within a specific period report, car and customer Info</h4>
-                    <form id="report1Form" action="report1.html" method="get" onsubmit="generateReport(1)">
-                        <div class="form-group">
-                            <label class="labelcustom" for="report1StartDate">From:</label>
-                            <input type="date" id="report1StartDate" name="startDate" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="labelcustom" for="report1EndDate">To:</label>
-                            <input type="date" id="report1EndDate" name="endDate" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
-                    </form>
+                    <a href="report1.html" class="btn btn-primary btn-block">Generate Report</a>
+                    <!-- <button type="submit" class="btn btn-primary btn-block">Generate Report</button> -->
                 </div>
             </div>
             
@@ -101,17 +90,7 @@
                         <h1 class="display-2 text-white1 mt-n2 m-0">02</h1>
                     </div>
                     <h4 class="text-uppercase mb-3">All reservations of any car within a specific period, all car info</h4>
-                    <form id="report2Form" action="report2.html" method="get" onsubmit="generateReport(2)">
-                        <div class="form-group">
-                            <label class="labelcustom" for="report2StartDate">From:</label>
-                            <input type="date" id="report2StartDate" name="startDate" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="labelcustom" for="report2EndDate">To:</label>
-                            <input type="date" id="report2EndDate" name="endDate" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
-                    </form>
+                    <a href="report2.html" class="btn btn-primary btn-block">Generate Report</a>
                 </div>
             </div>
     
@@ -122,13 +101,7 @@
                     <h1 class="display-2 text-white1 mt-n2 m-0">03</h1>
                  </div>
                 <h4 class="text-uppercase mb-3">Status of all cars on a specific day</h4>
-                <form id="report3Form" action="report3.html" method="get" onsubmit="generateReport(3)">
-                <div class="form-group">
-                    <label class="labelcustom" for="statusReportDate">Select Date:</label>
-                    <input type="date" id="statusReportDate" name="statusReportDate" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
-                    </form>
+                <a href="report3.html" class="btn btn-primary btn-block">Generate Report</a>
                 </div>
             </div>
             <!--Report 4--->
@@ -138,13 +111,7 @@
                             <h1 class="display-2 text-white1 mt-n2 m-0">04</h1>
                         </div>
                         <h4 class="text-uppercase mb-3">All reservations of a specific customer,customer info, car model, and plate id</h4>
-                        <form id="report4Form" action="report4.html" method="get" onsubmit="generateReport(4)">
-                            <div class="form-group">
-                                <label class="labelcustom" for="customerReportID">Customer ID:</label>
-                                <input type="number" id="customerReportID" name="customerReportID" class="form-control" min="1" required>
-                            </div>
-                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
-                        </form>
+                        <a href="report4.html" class="btn btn-primary btn-block">Generate Report</a>
                     </div>
                 </div> 
             <!--Report 05: Daily payments within a specific period-->
@@ -154,17 +121,8 @@
                             <h1 class="display-2 text-white1 mt-n2 m-0">05</h1>
                         </div>
                             <h4 class="text-uppercase mb-3">Daily payments within a specific period</h4>
-                            <form id="report5Form" action="report5.html" method="get" onsubmit="generateReport(5)">
-                                <div class="form-group">
-                                    <label  class="labelcustom " for="paymentReportStartDate">From:</label>
-                                    <input type="date" id="paymentReportStartDate" name="startDate" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="labelcustom " for="paymentReportEndDate">To:</label>
-                                    <input type="date" id="paymentReportEndDate" name="endDate" class="form-control">
-                                </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
-                            </form>
+                            <a href="report5.html" class="btn btn-primary btn-block">Generate Report</a>
+
                     </div>
                 </div>     
         </div>

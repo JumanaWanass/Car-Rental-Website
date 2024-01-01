@@ -9,7 +9,7 @@ $(document).ready(function() {
 
       $.ajax({
         method: "GET",
-        url: "http://localhost:5000/adsearch",  // Change the URL to match your server
+        url: "http://localhost:5000/admin/search",  // Change the URL to match your server
         data: JSON.stringify(formData),  // Convert form data to JSON string
                 success: function (response) {
                     console.log('Success:', response);
