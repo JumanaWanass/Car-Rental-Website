@@ -66,13 +66,17 @@ exports.createCar = async (req, res) => {
     }
 };
 
-// exports.testPrint =async (req,res)=> {
-// try{
-//     // const car = req.body; // Assuming car is sent in the request body
-//      console.log(req.body);
-//      res.sendFile(car +)
-// }catch (error) {
-//     res.status(500).json({ error: error.message });
-// }
+exports.changeStat = async (req, res) => {
 
-// };
+    console.log(req.file);
+    const car = req.body; // Assuming car is sent in the request body
+    car.photoID = req.file ? req.file.filename : 'default';
+
+    try {
+        const result = await Car.updateByAttributes(car);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message, car:car });
+    }
+};
+

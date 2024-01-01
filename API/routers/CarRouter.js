@@ -9,6 +9,7 @@ module.exports = function (upload) {
     router.post('/create', upload.single("photo"),  CarController.createCar);  
     router.delete('/delete', CarController.deleteByAttributes);
     router.put('/search', CarController.updateByAttributes);
+    router.post('/changeCarStatus', CarController.changeStat);
     // router.post('/formPost',CarController.testPrint);
     // router.get('/form',CarController.testPrint);
     return router;

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $("form").submit(function(e) {
       e.preventDefault();
       var formData = {};
@@ -8,7 +9,7 @@ $(document).ready(function() {
 
       $.ajax({
         method: "GET",
-        url: "http://localhost:5000/search",  // Change the URL to match your server
+        url: "http://localhost:5000/adsearch",  // Change the URL to match your server
         data: JSON.stringify(formData),  // Convert form data to JSON string
                 success: function (response) {
                     console.log('Success:', response);
@@ -21,9 +22,11 @@ $(document).ready(function() {
     });
 });
 
+
+
 // Function to dynamically update the models based on the selected make
 function updateModels() {
-    var selectedMake = document.getElementById("carMake").value;
+    var selectedMake = document.getElementById("make").value;
     var modelsDropdown = document.getElementById("model");
     modelsDropdown.innerHTML = "";
 
@@ -305,3 +308,28 @@ function addOption(dropdown, value) {
     option.value = value;
     dropdown.add(option);
 }
+
+$(document).ready(function() {
+
+
+    $("form").submit(function(e) {
+      e.preventDefault();
+      var formData = {};
+            $(this).serializeArray().forEach(function(item) {
+                formData[item.name] = item.value;
+            });
+
+      $.ajax({
+        method: "GET",
+        url: "http://localhost:5000/search",  // Change the URL to match your server
+        data: JSON.stringify(formData),  // Convert form data to JSON string
+                success: function (response) {
+                    console.log('Success:', response);
+                },
+                error: function (error) {
+                    // Handle errors
+                    console.log('Error:', error);
+                },
+      });
+    });
+});

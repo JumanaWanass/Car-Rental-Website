@@ -55,7 +55,6 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="admin.html" class="nav-item nav-link">Home</a>
                         <a href="reserve.html" class="nav-item nav-link">Reserve a car</a>
-                        <a href="userInfo.html" class="nav-item nav-link">My profile</a>
                         <a href="index.html" class="nav-item nav-link">Log out</a>
                     </div>
                 </div>
@@ -72,55 +71,106 @@
         <h1 class="display-3 text-uppercase text-white mb-3">Choose Report</h1> 
     </div>
     <!-- Page Header Start -->
-
-    <!-- About Start -->
-    <div class="row">
-            <div class="col-lg-4 col-md-6 mb-2">
-                <a href="report1.html" class="service-item d-flex flex-column justify-content-center px-4 mb-4">
+    <div class="container mx-auto">
+        <div class="row">
+            <!-- Report 01: All reservations within a specific period, car and customer Info -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h1 class="display-2 text-white mt-n2 m-0">01</h1>
+                        <h1 class="display-2 text-white1 mt-n2 m-0">01</h1>
                     </div>
-                    <h4 class="text-uppercase mb-3">All reservations within a specific period report</h4>
-                </a>
+                    <h4 class="text-uppercase mb-3">All reservations within a specific period report, car and customer Info</h4>
+                    <form id="report1Form" action="report1.html" method="get" onsubmit="generateReport(1)">
+                        <div class="form-group">
+                            <label class="labelcustom" for="report1StartDate">From:</label>
+                            <input type="date" id="report1StartDate" name="startDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="labelcustom" for="report1EndDate">To:</label>
+                            <input type="date" id="report1EndDate" name="endDate" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                    </form>
+                </div>
             </div>
-        
-            <div class="col-lg-4 col-md-6 mb-2">
-                <a href="report2.html" class="service-item d-flex flex-column justify-content-center px-4 mb-4">
+            
+            <!-- Report 02: All reservations of any car within a specific period, all car info -->
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h1 class="display-2 text-white mt-n2 m-0">02</h1>
+                        <h1 class="display-2 text-white1 mt-n2 m-0">02</h1>
                     </div>
-                    <h4 class="text-uppercase mb-3">All reservations of any car within a specific period</h4>
-                </a>
+                    <h4 class="text-uppercase mb-3">All reservations of any car within a specific period, all car info</h4>
+                    <form id="report2Form" action="report2.html" method="get" onsubmit="generateReport(2)">
+                        <div class="form-group">
+                            <label class="labelcustom" for="report2StartDate">From:</label>
+                            <input type="date" id="report2StartDate" name="startDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="labelcustom" for="report2EndDate">To:</label>
+                            <input type="date" id="report2EndDate" name="endDate" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                    </form>
+                </div>
             </div>
-        
-            <div class="col-lg-4 col-md-6 mb-2">
-                <a href="statusReport.html" class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h1 class="display-2 text-white mt-n2 m-0">03</h1>
+    
+          <!--Reopirt 03:-->  
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h1 class="display-2 text-white1 mt-n2 m-0">03</h1>
+                 </div>
+                <h4 class="text-uppercase mb-3">Status of all cars on a specific day</h4>
+                <form id="report3Form" action="report3.html" method="get" onsubmit="generateReport(3)">
+                <div class="form-group">
+                    <label class="labelcustom" for="statusReportDate">Select Date:</label>
+                    <input type="date" id="statusReportDate" name="statusReportDate" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                    </form>
+                </div>
+            </div>
+            <!--Report 4--->
+                <div class="col-lg-4 col-md-6 mb-5">
+                     <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h1 class="display-2 text-white1 mt-n2 m-0">04</h1>
+                        </div>
+                        <h4 class="text-uppercase mb-3">All reservations of a specific customer,customer info, car model, and plate id</h4>
+                        <form id="report4Form" action="report4.html" method="get" onsubmit="generateReport(4)">
+                            <div class="form-group">
+                                <label class="labelcustom" for="customerReportID">Customer ID:</label>
+                                <input type="number" id="customerReportID" name="customerReportID" class="form-control" min="1" required>
+                            </div>
+                        <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                        </form>
                     </div>
-                    <h4 class="text-uppercase mb-3">Status of all cars on a specific day</h4>
-                </a>
-            </div>
-        
-            <div class="col-lg-4 col-md-6 mb-2">
-                <a href="customerReport.html" class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h1 class="display-2 text-white mt-n2 m-0">04</h1>
+                </div> 
+            <!--Report 05: Daily payments within a specific period-->
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="service-item d-flex flex-column justify-content-center px-4 mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h1 class="display-2 text-white1 mt-n2 m-0">05</h1>
+                        </div>
+                            <h4 class="text-uppercase mb-3">Daily payments within a specific period</h4>
+                            <form id="report5Form" action="report5.html" method="get" onsubmit="generateReport(5)">
+                                <div class="form-group">
+                                    <label  class="labelcustom " for="paymentReportStartDate">From:</label>
+                                    <input type="date" id="paymentReportStartDate" name="startDate" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="labelcustom " for="paymentReportEndDate">To:</label>
+                                    <input type="date" id="paymentReportEndDate" name="endDate" class="form-control">
+                                </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                            </form>
                     </div>
-                    <h4 class="text-uppercase mb-3">All reservations of a specific customer</h4>
-                </a>
-            </div>
-        
-            <div class="col-lg-4 col-md-6 mb-2">
-                <a href="paymentReport.html" class="service-item d-flex flex-column justify-content-center px-4 mb-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h1 class="display-2 text-white mt-n2 m-0">05</h1>
-                    </div>
-                    <h4 class="text-uppercase mb-3">Daily payments within a specific period</h4>
-                </a>
-            </div>
-        
+                </div>     
+        </div>
     </div>
+    <!-- About Start -->
+
  <!-- About end -->
     <!-- Footer Start -->
 
@@ -131,13 +181,10 @@
   </div>
   <!-- Footer End -->
 
-    
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-      
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -149,8 +196,14 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
-    <script src="js/main.js"></script>
+    <script>
+        function generateReport(reportNumber) {
+            var script = document.createElement('script');
+            script.src = 'js/report' + reportNumber + '.js';
+            document.body.appendChild(script);
+        }
+    </script>
+    <!--script src="js/main.js"></script>-->
 </body>
 
 </html>
