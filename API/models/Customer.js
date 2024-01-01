@@ -84,10 +84,9 @@ class Customer
 
     static async createCustomer(customer) {
         // Validate registration before creating the customer
-        const validation = await this.validateRegistration(customer.Email, customer.SSN, customer.CountryName);
+        const validation = await validateRegistration(customer.Email, customer.SSN, customer.CountryName);
     
         if (!validation.success) {
-            // Validation failed, return an error message
             return { success: false, error: validation.message };
         }
     
@@ -111,14 +110,14 @@ class Customer
     static async validateRegistration(email, ssn, country) 
     {
         // Check if the email is unique
-        const [emailResult] = await this.findByAttributes({ email });
+        const [emailResult] = await findByAttributes({ email });
         if (emailResult.length > 0) 
         {
             return { success: false, message: 'Email is already registered.' };
         }
     
         // Check if the SSN is unique considering the country
-        const [ssnResult] = await this.findByAttributes({ ssn });
+        const [ssnResult] = await findByAttributes({ ssn });
         if (ssnResult.length > 0) 
         {
             const existingCountry = ssnResult[0].country;

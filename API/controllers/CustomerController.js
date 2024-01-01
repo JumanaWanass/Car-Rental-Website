@@ -56,7 +56,8 @@ exports.updateByAttributes = async (req, res) => {
 // CustomerController.js
 exports.createCustomer = async (req, res) => {
   try {
-    const customerDataString = Object.keys(req.body)[0];
+    const customerDataString = Object.keys(req.body);
+    console.log(customerDataString)
     const customerData = JSON.parse(customerDataString);
 
     // Extract email, ssn, and country from customerData
@@ -74,8 +75,7 @@ exports.createCustomer = async (req, res) => {
 
     // Additional logic for the /register route
     if (req.path === '/register') {
-      // You can add specific logic for registration route if needed
-      // For example, setting additional session data or sending a welcome email
+
     }
 
     // Create the customer
