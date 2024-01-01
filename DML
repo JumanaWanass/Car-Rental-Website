@@ -16,3 +16,6 @@ UPDATE Reservation SET paymentDate = '2023-01-07' WHERE reserveID = 7;
 UPDATE Reservation SET paymentDate = '2023-01-08' WHERE reserveID = 8;
 UPDATE Reservation SET paymentDate = '2023-01-09' WHERE reserveID = 9;
 UPDATE Reservation SET paymentDate = '2023-01-12' WHERE reserveID = 10;
+
+ALTER TABLE reservation
+DROP COLUMN paymentStatus;
