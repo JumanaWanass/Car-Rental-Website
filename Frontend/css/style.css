@@ -166,7 +166,9 @@ input[type="submit"] {
 .service-item h4 {
     transition: .5s;
 }
-
+.service-item-new:hover{
+    color: #FF000 !important;
+}
 .service-item:hover h1,
 .service-item.active h1 {
     color: var(--dark) !important;
@@ -327,6 +329,7 @@ input[type="submit"] {
 }
 
 .bg-banner {
-    background: linear-gradient(rgba(255, 0, 0, .9), rgba(255, 0, 0, .9)), url(../img/bg-banner.jpg);
+    background: linear-gradient(rgba(254, 244, 232, 0.3), rgba(254, 244, 232, 0.3)), url(../img/bg-banner.jpg);
+
     background-attachment: fixed;
 }

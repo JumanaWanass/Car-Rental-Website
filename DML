@@ -1,2 +1,18 @@
 ALTER TABLE car
 ALTER COLUMN status SET DEFAULT 'Available';
+
+
+-- Adding paymentDate column to Reservation table
+ALTER TABLE Reservation
+ADD COLUMN paymentDate DATE; --for report number 5
+-- its dummy data
+UPDATE Reservation SET paymentDate = '2023-01-01' WHERE reserveID = 1;
+UPDATE Reservation SET paymentDate = '2023-01-02' WHERE reserveID = 2;
+UPDATE Reservation SET paymentDate = '2023-01-01' WHERE reserveID = 3;
+UPDATE Reservation SET paymentDate = '2023-01-01' WHERE reserveID = 4;
+UPDATE Reservation SET paymentDate = '2023-01-05' WHERE reserveID = 5;
+UPDATE Reservation SET paymentDate = '2023-01-02' WHERE reserveID = 6;
+UPDATE Reservation SET paymentDate = '2023-01-07' WHERE reserveID = 7;
+UPDATE Reservation SET paymentDate = '2023-01-08' WHERE reserveID = 8;
+UPDATE Reservation SET paymentDate = '2023-01-09' WHERE reserveID = 9;
+UPDATE Reservation SET paymentDate = '2023-01-12' WHERE reserveID = 10;
