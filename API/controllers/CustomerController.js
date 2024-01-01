@@ -1,5 +1,5 @@
 const Customer = require("../models/Customer");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 exports.getAll = async (req, res) => {
   try {
@@ -12,18 +12,20 @@ exports.getAll = async (req, res) => {
 
 exports.getByAttributes = async (req, res) => {
   try {
-      const attribute = req.query.attribute;
-      const value = req.query.value;
+    const attribute = req.query.attribute;
+    const value = req.query.value;
 
-      if (!attribute || !value) {
-          return res.status(400).json({ error: 'Both attribute and value are required.' });
-      }
+    if (!attribute || !value) {
+      return res
+        .status(400)
+        .json({ error: "Both attribute and value are required." });
+    }
 
-      const attributes = { [attribute]: value };
-      const [result, _] = await Customer.findByAttributes(attributes);
-      res.status(200).json(result);
+    const attributes = { [attribute]: value };
+    const [result, _] = await Customer.findByAttributes(attributes);
+    res.status(200).json(result);
   } catch (error) {
-      res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -51,65 +53,83 @@ exports.updateByAttributes = async (req, res) => {
   }
 };
 
+// CustomerController.js
 exports.createCustomer = async (req, res) => {
   try {
     const customerDataString = Object.keys(req.body)[0];
     const customerData = JSON.parse(customerDataString);
+
+    // Extract email, ssn, and country from customerData
+    const { Email, SSN, Country, Password } = req.body;
+
+    // Validate registration
+    const validation = await Customer.validateRegistration(Email, SSN, Country);
+    if (!validation.success) {
+      return res.status(400).json({ error: validation.message });
+    }
+
+    // Hash the password
     const saltRounds = 10;
-    customerData.Password = await bcrypt.hash(customerData.Password, saltRounds);
-    const [result, _] = await Customer.createCustomer(customerData);
-    req.session.userID = customerData.ssn;
+    customerData.Password = await bcrypt.hash(Password, saltRounds);
+
+    // Additional logic for the /register route
+    if (req.path === '/register') {
+      // You can add specific logic for registration route if needed
+      // For example, setting additional session data or sending a welcome email
+    }
+
+    // Create the customer
+    const result = await Customer.createCustomer(customerData);
+
+    // Set session data
+    req.session.userID = SSN;
     req.session.admin = false;
     req.session.auth = true;
-    
+
     res.status(200).json(result);
   } catch (error) {
     console.error(error); // Log the error for debugging
-    res.status(500).json({ error: 'Internal Server Error' });
+
+    // Handle specific validation errors
+    if (error.success === false) {
+      return res.status(400).json({ error: error.error });
+    }
+
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 exports.login = async (req, res) => {
   try {
     const data = req.body; // Assuming customer is sent in the request body
-    if (req.session.userID)
-    {
-      res.status(200).json({message: "Already logged in "});
-    }
-    else
-    {
+    if (req.session.userID) {
+      res.status(200).json({ message: "Already logged in " });
+    } else {
+      if (!(data.Email && data.Password)) {
+        res.status(304).json({ message: "Missing email or password" });
+      } else {
+        const [result, _] = await Customer.findByAttributes({
+          Email: data.Email,
+        });
 
-      if (!(data.Email && data.Password))
-      {
-        res.status(304).json({message: "Missing email or password"})
-      }
-      else
-      {
-        const [result, _] = await Customer.findByAttributes({Email:data.Email});
-        
-        if (!result)
-        {
-          res.status(301).json({message: "Unauthorized"})
-        }
-        else
-        {
+        if (!result) {
+          res.status(301).json({ message: "Unauthorized" });
+        } else {
           const match = await bcrypt.compare(data.Password, result[0].Password);
-          if (match)
-          {
+          if (match) {
             console.log(result[0].custID);
             req.session.userID = result[0].custID;
             req.session.admin = false;
             req.session.auth = true;
-            res.status(200).json({message: "Logged in success"});
-          }
-          else
-          {
-            res.status(301).json({message: "Unauthorized"})
+            res.status(200).json({ message: "Logged in success" });
+          } else {
+            res.status(301).json({ message: "Unauthorized" });
           }
         }
       }
     }
-    } catch (error) {
-      res.status(500).json({ error: error });
-    }
-}
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+};
