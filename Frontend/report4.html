@@ -45,9 +45,6 @@
             <a href="" class="navbar-brand">
                 <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
                     <a href="admin.html" class="nav-item nav-link">Home</a>
@@ -58,17 +55,31 @@
         </nav>
     </div>
 </div>
+
+<form id="report4Form" method="GET" class="container-fluid bg-white pt-3 px-lg-5">
+    <div class="row mx-n2">
+        <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+            <div class="form-group">
+                <input type="text" class="form-control p-4" name="custID" placeholder="Customer ID" required="required">
+            </div>
+        </div>
+   
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+            <button class="btn btn-primary btn-block mb-3" type="submit" style="height: 50px;">Search</button>
+        </div>
+    </div>
+</form>
 <!-- Navbar End -->
 
-<div class="report-container">
+<div class="report-container container-fluid bg-white pt-3 px-lg-5">
     <h2>Report 4: All reservations of a specific customer,customer info, car model, and plate id</h2>
 
     <!-- Display your report table here -->
     <table id="reportTable">
         <thead>
             <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
+                <th></th>
+                <th></th>
                 <!-- Add more columns as needed -->
             </tr>
         </thead>
@@ -78,10 +89,19 @@
     </table>
 </div>
 
-<!-- Bootstrap JS and Popper.js (Assuming you are using Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+<script src="js/report4.js"></script>
 
 
 

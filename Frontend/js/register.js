@@ -1,4 +1,5 @@
-$(document).ready(function () {
+$(document).ready(function () 
+{
   $.ajax({
       type: 'GET',
       url: 'http://localhost:5000/checkSession',
@@ -18,6 +19,7 @@ $(document).ready(function () {
       $(this).serializeArray().forEach(function (item) {
           formData[item.name] = item.value;
       });
+
 
       $.ajax({
           method: "POST",

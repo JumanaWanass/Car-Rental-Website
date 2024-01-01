@@ -14,7 +14,7 @@ function changeCarStatus() {
     // Make an Ajax request
     $.ajax({
         type: "POST", // Change the request type as needed
-        url: "/changeCarStatus", // Update the URL to your server endpoint
+        url: "http://localhost:5000/car/changeCarStatus", // Update the URL to your server endpoint
         data: data,
         success: function (response) {
             // Handle success (if needed)

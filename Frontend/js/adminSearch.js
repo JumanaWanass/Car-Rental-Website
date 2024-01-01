@@ -2,6 +2,27 @@ $(document).ready(function() {
     fetchMakes();
 
     $("form").submit(function(e) {
+<<<<<<< HEAD
+      e.preventDefault();
+      var formData = {};
+            $(this).serializeArray().forEach(function(item) {
+                formData[item.name] = item.value;
+            });
+
+      $.ajax({
+        method: "GET",
+        url: "http://localhost:5000/admin/search",  // Change the URL to match your server
+        data: JSON.stringify(formData),  // Convert form data to JSON string
+                success: function (response) {
+                    console.log('Success:', response);
+                },
+                error: function (error) {
+                    // Handle errors
+                    console.log('Error:', error);
+                },
+      });
+    });
+=======
         e.preventDefault();
         var formData = {};
         $(this).serializeArray().forEach(function(item) {
@@ -28,6 +49,7 @@ $(document).ready(function() {
         });
        });
        
+>>>>>>> e8b0f53322210f56986b3bf3775ff7e9142d92b5
 });
 
 

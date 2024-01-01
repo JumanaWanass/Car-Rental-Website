@@ -167,7 +167,7 @@ input[type="submit"] {
     transition: .5s;
 }
 .service-item-new:hover{
-    color: #FF000 !important;
+    color: #FF0000 !important;
 }
 .service-item:hover h1,
 .service-item.active h1 {
@@ -333,3 +333,10 @@ input[type="submit"] {
 
     background-attachment: fixed;
 }
+/* 
+.labelcustom {
+    text-align: center;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    color: #970747;
+} */
