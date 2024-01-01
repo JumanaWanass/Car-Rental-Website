@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Admin Search</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>  <!--jquery for ajax--> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--jquery for ajax-->
 
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -27,6 +29,7 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
+
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
@@ -38,8 +41,8 @@
         </div>
     </div>
     <!-- Topbar End -->
-    
-    
+
+
     <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="position-relative px-lg-5" style="z-index: 9;">
@@ -61,127 +64,103 @@
         </div>
     </div>
     <!-- Navbar End -->
-<div class="container mx-auto">
-    <h2>Search by any:</h2>
-    <form  method="get">
-        <div class="container mx-auto">
-            
-            <h3>Search by Car Information:</h3>
-        </div>
-        <div class="form-group row">
-            <label for="make" class="col-md-2 col-form-label">Make:</label>
-            <div class="col-md-4">
-                <select id="make" name="make" oninput="updateModels()">
-                    <option value="" disabled selected>Choose car's make</option>
-                                <option value="Acura">Acura</option>
-                                <option value="Alfa Romeo">Alfa Romeo</option>
-                                <option value="Aston Martin">Aston Martin</option>
-                                <option value="Audi">Audi</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Buick">Buick</option>
-                                <option value="Chevrolet">Chevrolet</option>
-                                <option value="Dodge">Dodge</option>
-                                <option value="Fiat">Fiat</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Honda">Honda</option>
-                                <option value="Hyundai">Hyundai</option>
-                                <option value="Kia">Kia</option>
-                                <option value="Lamborghini">Lamborghini</option>
-                                <option value="Lexus">Lexus</option>
-                                <option value="Mazda">Mazda</option>
-                                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                <option value="Mini">Mini</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Subaru">Subaru</option>
-                                <option value="Tesla">Tesla</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Volkswagen">Volkswagen</option>
-                </select>
+    <div class="container mx-auto">
+        <h2>Search by any:</h2>
+        <form method="get">
+            <div class="container mx-auto">
+
+                <h3>Search by Car Information:</h3>
             </div>
-        
-            <label for="model" class="col-md-2 col-form-label">Model:</label>
-            <div class="col-md-4">
-                <select id="model" name="model" title="Choose an model">
-                    <option value="" disabled selected>Choose car's make first</option>
-                </select>
+            <div class="form-group row">
+                <label for="make" class="col-md-2 col-form-label">Make:</label>
+                <div class="col-md-4">
+                    <select id="make" name="make">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+             
+                <label for="model" class="col-md-2 col-form-label">Model:</label>
+                <div class="col-md-4">
+                    <select id="model" name="model">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+             </div>
+             
+
+            <div class="form-group row">
+                <label for="carID" class="col-md-2 col-form-label">Car ID:</label>
+                <div class="col-md-4">
+                    <input type="text" id="carID" name="carID">
+                </div>
+
+                <label for="color" class="col-md-2 col-form-label">Color:</label>
+                <div class="col-md-4">
+                    <input type="text" id="color" name="color">
+                </div>
             </div>
 
-                       
-        </div>
-        
-        <div class="form-group row">
-            <label for="carID" class="col-md-2 col-form-label">Car ID:</label>
-            <div class="col-md-4">
-                <input type="text" id="carID" name="carID">
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
             </div>
-        
-            <label for="color" class="col-md-2 col-form-label">Color:</label>
-            <div class="col-md-4">
-                <input type="text" id="color" name="color">
-            </div>
-        </div>
-        
-        <div class="form-group row">
-            <div class="col-md-10 offset-md-2">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </div>
 
-        <!-- Customer Information Fields -->
-        <div class="form-group">
-            <h3>Search by Customer Information:</h3>
-        </div>
-        
-        <div class="form-group row">
-            <label for="ssn" class="col-md-2 col-form-label">Customer SSN:</label>
-            <div class="col-md-4">
-                <input type="text" id="ssn" name="ssn">
+            <!-- Customer Information Fields -->
+            <div class="form-group">
+                <h3>Search by Customer Information:</h3>
             </div>
-        
-            <label for="Fname" class="col-md-2 col-form-label">First Name:</label>
-            <div class="col-md-4">
-                <input type="text" id="Fname" name="Fname">
+
+            <div class="form-group row">
+                <label for="ssn" class="col-md-2 col-form-label">Customer SSN:</label>
+                <div class="col-md-4">
+                    <input type="text" id="ssn" name="ssn">
+                </div>
+
+                <label for="Fname" class="col-md-2 col-form-label">First Name:</label>
+                <div class="col-md-4">
+                    <input type="text" id="Fname" name="Fname">
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-            <label for="Lname" class="col-md-2 col-form-label">Last Name:</label>
-            <div class="col-md-4">
-                <input type="text" id="Lname" name="Lname">
+
+            <div class="form-group row">
+                <label for="Lname" class="col-md-2 col-form-label">Last Name:</label>
+                <div class="col-md-4">
+                    <input type="text" id="Lname" name="Lname">
+                </div>
+
+                <label for="CountryName" class="col-md-2 col-form-label">Country:</label>
+                <div class="col-md-4">
+                    <input type="text" id="CountryName" name="CountryName">
+                </div>
             </div>
-        
-            <label for="CountryName" class="col-md-2 col-form-label">Country:</label>
-            <div class="col-md-4">
-                <input type="text" id="CountryName" name="CountryName">
+
+            <div class="form-group row">
+                <label for="City" class="col-md-2 col-form-label">City:</label>
+                <div class="col-md-4">
+                    <input type="text" id="City" name="City">
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-            <label for="City" class="col-md-2 col-form-label">City:</label>
-            <div class="col-md-4">
-                <input type="text" id="City" name="City">
+
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-            <div class="col-md-10 offset-md-2">
-                <button type="submit" class="btn btn-primary">Search</button>
+
+            <!-- Reservation Day Field -->
+            <div class="form-group row">
+                <h3>Search by Reservation Day:</h3>
+                <div class="col-md-4">
+                    <input placeholder="Reservation Date" type="date" id="pickupDate" name="pickupDate">
+                </div>
+
+                <div class="col-md-2 col-form-label">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
             </div>
-        </div>
-       
-        <!-- Reservation Day Field -->
-        <div class="form-group row">
-            <h3>Search by Reservation Day:</h3>
-            <div class="col-md-4">
-                <input placeholder="Reservation Date" type="date" id="pickupDate" name="pickupDate">
-            </div>
-            
-            <div class="col-md-2 col-form-label">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="js/adminSearch.js"></script>

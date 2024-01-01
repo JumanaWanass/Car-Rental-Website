@@ -80,3 +80,12 @@ exports.changeStat = async (req, res) => {
     }
 };
 
+exports.getUniqueMakeModelCombinations = async (req, res) => {
+    try {
+        const [result, _] = await Car.findUniqueMakeModelCombinations();
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+

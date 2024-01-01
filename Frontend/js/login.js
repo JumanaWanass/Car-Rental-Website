@@ -3,6 +3,9 @@ $(document).ready(function () {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:5000/checkSession', // Replace with your actual server route
+        xhrFields: {
+            withCredentials: true // Include cookies in the request
+          },
         success: function (response) {
           // If the server responds with a session, redirect to another HTML page
           if (response.sessionExists) {
@@ -35,6 +38,9 @@ $(document).ready(function () {
         $.ajax({
             method: "POST",
             url: url,
+            xhrFields: {
+                withCredentials: true // Include cookies in the request
+              },
             data: JSON.stringify(formData),
             contentType: 'application/json',
             dataType: 'json',

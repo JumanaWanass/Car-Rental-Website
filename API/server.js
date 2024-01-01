@@ -2,7 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
-const path = require('path')
 const session = require('express-session');
 
 const app = express();  //we're hosting
@@ -18,11 +17,14 @@ app.use(session({
     sameSite: true,
   },
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 
 // CORS
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
 
 
 // Set up Multer storage
@@ -62,21 +64,10 @@ const adminRouter = require('./routers/adminSearchRouter');
 const reportRouter = require('./routers/reportsRouter'); 
 
 app.get('/', (req, res) => {
-  req.session.auth = true;
   res.status(200).json({ hi: 'welcome' });
 });
 
-app.get('/logout', (req, res) => {
-  req.session.auth = false;
-  res.status(200).json({message:"Logout"})
-});
 
-
-app.get('/checkSession', (req, res) => {
-  console.log(req.session);
-  const sessionExists = req.session.auth ? true : false;
-  res.json({ sessionExists });
-});
 
 // Routers
 app.use('/office', OfficeRouter);
@@ -86,6 +77,18 @@ app.use('/employee', EmployeeRouter);
 app.use('/reservation', ReservationRouter); 
 app.use('/admin', adminRouter); 
 app.use('/report', reportRouter); 
+
+app.get('/logout', (req, res) => {
+  req.session.auth = false;
+  req.session.userID = null;
+  req.session.admin = false;
+  res.status(200).json({message:"Logout"})
+});
+
+app.get('/checkSession', (req, res) => {
+  const sessionExists = req.session.auth ? true : false;
+  res.json({ sessionExists });
+});
 
 app.listen(5000, () => console.log(`Server running on http://localhost:5000/`));
 

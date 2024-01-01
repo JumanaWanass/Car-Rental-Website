@@ -167,7 +167,7 @@ input[type="submit"] {
     transition: .5s;
 }
 .service-item-new:hover{
-    color: #FF000 !important;
+    color: #FF0000 !important;
 }
 .service-item:hover h1,
 .service-item.active h1 {

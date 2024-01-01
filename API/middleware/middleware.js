@@ -3,4 +3,10 @@ function authenticate(req, res, next) {
     next(); // next means all good
 }
 
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
+
+  
 module.exports = authenticate;
