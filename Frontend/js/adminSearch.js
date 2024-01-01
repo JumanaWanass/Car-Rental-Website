@@ -93,8 +93,6 @@ function fetchMakes() {
 
 
 $(document).ready(function() {
-
-
     $("form").submit(function(e) {
         e.preventDefault();
         var formData = {};

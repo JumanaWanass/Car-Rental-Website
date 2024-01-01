@@ -464,38 +464,21 @@
     <div class="container my-4">
         <form id="reservationForm">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="makeDropdown">Select Car Make:</label>
-                        <select class="form-control" id="makeDropdown" onchange="updateModels()">
-                            <option value="" disabled selected>Select by make</option>
-                            <option value="Abarth">Abarth</option>
-                            <option value="Acura">Acura</option>
-                            <option value="Alfa Romeo">Alfa Romeo</option>
-                            <option value="Aston Martin">Aston Martin</option>
-                            <option value="Audi">Audi</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Buick">Buick</option>
-                            <option value="Chevrolet">Chevrolet</option>
-                            <option value="Dodge">Dodge</option>
-                            <option value="Fiat">Fiat</option>
-                            <option value="Ford">Ford</option>
-                            <option value="Honda">Honda</option>
-                            <option value="Hyundai">Hyundai</option>
-                            <option value="Kia">Kia</option>
-                            <option value="Lamborghini">Lamborghini</option>
-                            <option value="Lexus">Lexus</option>
-                            <option value="Mazda">Mazda</option>
-                            <option value="Mercedes-Benz">Mercedes-Benz</option>
-                            <option value="Mini">Mini</option>
-                            <option value="Nissan">Nissan</option>
-                            <option value="Subaru">Subaru</option>
-                            <option value="Tesla">Tesla</option>
-                            <option value="Toyota">Toyota</option>
-                            <option value="Volkswagen">Volkswagen</option>
+                <div class="form-group row">
+                    <label for="make" class="col-md-2 col-form-label">Make:</label>
+                    <div class="col-md-4">
+                        <select id="make" name="make">
+                            <!-- Options will be populated dynamically -->
                         </select>
                     </div>
-                </div>
+                 
+                    <label for="model" class="col-md-2 col-form-label">Model:</label>
+                    <div class="col-md-4">
+                        <select id="model" name="model">
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                 </div>
                 <div class="col-md-6 mt-3 mt-md-0">
                     <div class="form-group">
                         <label for="model">Select Car Model:</label>
@@ -733,6 +716,8 @@
 
             <!-- Template Javascript -->
             <script src="js/main.js"></script>
+            <script src= "js/adminSearch.js"></script>
+
 </body>
 
 
