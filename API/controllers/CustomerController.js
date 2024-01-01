@@ -54,11 +54,12 @@ exports.updateByAttributes = async (req, res) => {
 };
 
 // CustomerController.js
-exports.createCustomer = async (req, res) => {
+exports.createCustomer = async (req, res) => 
+{
   try {
     const customerDataString = Object.keys(req.body);
     console.log(customerDataString)
-    const customerData = JSON.parse(customerDataString);
+    const customerData = req.body;
 
     // Extract email, ssn, and country from customerData
     const { Email, SSN, Country, Password } = req.body;
@@ -72,11 +73,6 @@ exports.createCustomer = async (req, res) => {
     // Hash the password
     const saltRounds = 10;
     customerData.Password = await bcrypt.hash(Password, saltRounds);
-
-    // Additional logic for the /register route
-    if (req.path === '/register') {
-
-    }
 
     // Create the customer
     const result = await Customer.createCustomer(customerData);
