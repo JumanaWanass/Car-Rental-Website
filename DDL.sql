@@ -46,7 +46,7 @@ Create Table Customer(
     Street VARCHAR(255),
     CountryName VARCHAR(255),
     City VARCHAR(255),
-    Email VARCHAR(255),
+    Email VARCHAR(255) UNIQUE,
     Password VARCHAR(255)
 );
 -- Creating Reservation Table
