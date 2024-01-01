@@ -16,24 +16,23 @@ class CarCustomerReservation {
 
     static findByAttributes(attributes) {
         const nonEmptyAttributes = Object.fromEntries(
-            Object.entries(attributes).filter(([key, value]) => value !== '')
+          Object.entries(attributes).filter(([key, value]) => value !== '')
         );
-
+       
         const whereConditions = Object.entries(nonEmptyAttributes)
-            .map(([key, value]) => `${key}='${value}'`)
-            .join(' AND ');
-
-        const sql = whereConditions
-            ? `SELECT * FROM customer 
-               JOIN reservation ON customer.custID = reservation.custID 
-               JOIN car ON reservation.carID = car.carID 
-               WHERE ${whereConditions}`
-            : 'SELECT * FROM customer JOIN reservation ON customer.custID = reservation.custID JOIN car ON reservation.carID = car.carID';
-
+          .map(([key, value]) => `${key}='${value}'`)
+          .join(' AND ');
+       
+        let sql = 'SELECT * FROM customer JOIN reservation ON customer.custID = reservation.custID JOIN car ON reservation.carID = car.carID';
+       
+        if (whereConditions) {
+          sql += ` WHERE ${whereConditions}`;
+        }
+       
         console.log('Generated SQL query:', sql);
-
+       
         return db.execute(sql);
-    }
+       }
 }
 
 module.exports = CarCustomerReservation;

@@ -20,5 +20,10 @@
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.6.5",
     "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express-session": "^1.17.10",
+    "@types/multer": "^1.4.11"
   }
 }
