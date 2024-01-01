@@ -1,5 +1,15 @@
 function fillTable(jsonData) {
-  var table = $('#reportTable tbody');
+  var table = $('#reportTable');
+
+  // Clear existing rows
+  table.find('tbody').empty();
+
+  // Update headers based on the keys of the first object in jsonData
+  var headers = table.find('thead tr');
+  headers.empty();
+  $.each(jsonData[0], function (key, value) {
+      headers.append($('<th>').text(key));
+  });
 
   // Iterate over each object in the JSON array
   $.each(jsonData, function (index, object) {
@@ -13,25 +23,22 @@ function fillTable(jsonData) {
       });
 
       // Append the row to the table body
-      table.append(row);
+      table.find('tbody').append(row);
   });
 }
+
 
 $(document).ready(function () {
   $("#report1Form").submit(function (event) {
     event.preventDefault(); // prevent the default form submission
 
-    var formData = {};
-    $(this).serializeArray().forEach(function (item) {
-        formData[item.name] = item.value;
-    });
+    var formData = $('#report1Form').serialize();
     console.log(formData);
 
     $.ajax({
-        method: 'POST',  // Assuming you want to send data via POST method
+        method: 'GET',
         url: 'http://localhost:5000/report/1',
-        contentType: 'application/json',  // Set the content type to JSON
-        data: JSON.stringify(formData),  // Convert form data to JSON string
+        data: formData,  // Use form data directly without stringifying for a GET request
         success: function (response) {
             fillTable(response);
             console.log('Success:', response);
@@ -42,4 +49,5 @@ $(document).ready(function () {
         },
     });
   });
+
 });

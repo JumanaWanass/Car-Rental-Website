@@ -70,6 +70,7 @@ class Customer
         const sql = `DELETE FROM customer WHERE ${whereClause};`;
         return db.execute(sql);
     }
+
     static updateByAttributes(attributes, newValues) {
         const whereClause = Object.keys(attributes)
             .map(key => `${key}='${attributes[key]}'`)
@@ -81,8 +82,15 @@ class Customer
         return db.execute(sql);
     }
 
-    static createCustomer(customer)
-    {
+    static async createCustomer(customer) {
+        // Validate registration before creating the customer
+        const validation = await validateRegistration(customer.Email, customer.SSN, customer.CountryName);
+    
+        if (!validation.success) {
+            return { success: false, error: validation.message };
+        }
+    
+        // Validation succeeded, proceed with creating the customer
         const newCustomer = new Customer(
             customer.ssn,
             customer.Fname,
@@ -94,7 +102,32 @@ class Customer
             customer.Email,
             customer.Password
         );
+    
         return newCustomer.save();
     }
+    
+
+    static async validateRegistration(email, ssn, country) 
+    {
+        // Check if the email is unique
+        const [emailResult] = await findByAttributes({ email });
+        if (emailResult.length > 0) 
+        {
+            return { success: false, message: 'Email is already registered.' };
+        }
+    
+        // Check if the SSN is unique considering the country
+        const [ssnResult] = await findByAttributes({ ssn });
+        if (ssnResult.length > 0) 
+        {
+            const existingCountry = ssnResult[0].country;
+            if (existingCountry === country) {
+                return { success: false, message: 'SSN is already registered in the same country.' };
+            }
+        }
+    
+        return { success: true, message: 'Validation successful.' };
+    }
+    
 }
 module.exports = Customer;
