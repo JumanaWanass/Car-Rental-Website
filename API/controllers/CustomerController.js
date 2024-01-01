@@ -1,5 +1,5 @@
-const Customer = require("../models/Customer");
 const bcrypt = require('bcrypt');
+const Customer = require("../models/Customer");
 
 exports.getAll = async (req, res) => {
   try {
@@ -96,11 +96,10 @@ exports.login = async (req, res) => {
           const match = await bcrypt.compare(data.Password, result[0].Password);
           if (match)
           {
-            console.log(result[0].custID);
             req.session.userID = result[0].custID;
             req.session.admin = false;
             req.session.auth = true;
-            res.status(200).json({message: "Logged in success"});
+            res.status(200).json(req.session);
           }
           else
           {

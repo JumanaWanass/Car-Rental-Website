@@ -45,9 +45,6 @@
             <a href="" class="navbar-brand">
                 <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
                     <a href="admin.html" class="nav-item nav-link">Home</a>
@@ -58,6 +55,27 @@
         </nav>
     </div>
 </div>
+
+<form id="report1Form" method="GET" class="container-fluid bg-white pt-3 px-lg-5">
+    <div class="row mx-n2">
+        <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+            <div class="form-group">
+                <label class="labelcustom" for="report1StartDate">From</label>
+                <input type="date" class="form-control p-4 datetimepicker-input"  id="report1StartDate" name="startDate" class="form-control">
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+            <div class="form-group">
+                <label class="labelcustom" for="report1EndDate">To</label>
+                <input type="date" class="form-control p-4 datetimepicker-input"  id="report1EndDate" name="endDate" class="form-control">
+            </div>
+        </div>
+   
+        <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+            <button class="btn btn-primary btn-block mb-3" type="submit" style="margin-top:1.9em;height: 50px;">Search</button>
+        </div>
+    </div>
+</form>
 <!-- Navbar End -->
 
 <div class="report-container">
@@ -78,34 +96,18 @@
     </table>
 </div>
 
-<!-- Bootstrap JS and Popper.js (Assuming you are using Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-<!-- Your JavaScript to fetch and update data
-<script>
-    $(document).ready(function () {
-        // Replace 'your_api_endpoint' with the actual endpoint to retrieve data
-        $.ajax({
-            url: 'your_api_endpoint',
-            method: 'GET',
-            success: function (data) {
-                // Assuming data is an array of objects with properties corresponding to table columns
-                for (var i = 0; i < data.length; i++) {
-                    $('#reportTable tbody').append('<tr>' +
-                        '<td>' + data[i].Column1 + '</td>' +
-                        '<td>' + data[i].Column2 + '</td>' +
-                        // Add more columns as needed
-                        '</tr>');
-                }
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    });
-</script> -->
-
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+<script src="js/report1.js"></script>
 </body>
 </html>
