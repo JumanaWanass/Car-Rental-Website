@@ -131,28 +131,13 @@
     <div class="container">
         <div id="carSearchForm">
             <div class="row">
-<<<<<<< HEAD
-                <div class="form-group row">
-                    <label for="make" class="col-md-2 col-form-label">Make:</label>
-                    <div class="col-md-4">
-                        <select id="make" name="make">
-                            <!-- Options will be populated dynamically -->
-                        </select>
-=======
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="country">Country:</label>
                         <input type="text" id="country" name="country" required class="form-control">
->>>>>>> 37c084e7aacd78d6ab63648f034837345f3fc1f0
                     </div>
-                 
-                    <label for="model" class="col-md-2 col-form-label">Model:</label>
-                    <div class="col-md-4">
-                        <select id="model" name="model">
-                            <!-- Options will be populated dynamically -->
-                        </select>
-                    </div>
-                 </div>
+                </div>
+
                 <div class="col-md-6 mt-3 mt-md-0">
                     <div class="form-group">
                         <label for="city">City:</label>
@@ -186,23 +171,7 @@
         </div>
         
 
-        <div class="form-group row">
-            <label for="make" class="col-md-2 col-form-label">Make:</label>
-            <div class="col-md-4">
-                <select id="make" name="make">
-                    <!-- Options will be populated dynamically -->
-                </select>
-            </div>
-         
-            <label for="model" class="col-md-2 col-form-label">Model:</label>
-            <div class="col-md-4">
-                <select id="model" name="model">
-                    <!-- Options will be populated dynamically -->
-                </select>
-            </div>
-         </div>
-
-
+      
 
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Make</button>
@@ -214,7 +183,7 @@
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Model</button>
             <div id="model" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                <input id="model" type="text" placeholder="Search.." >
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
