@@ -114,6 +114,7 @@ class Car
         const sql = 'SELECT DISTINCT make, model FROM Car';
         return db.execute(sql);
     }
+    
 
 }
 module.exports = Car;
