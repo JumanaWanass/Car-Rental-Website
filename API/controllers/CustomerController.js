@@ -78,7 +78,6 @@ exports.login = async (req, res) => {
     }
     else
     {
-
       if (!(data.Email && data.Password))
       {
         res.status(304).json({message: "Missing email or password"})
@@ -108,7 +107,7 @@ exports.login = async (req, res) => {
         }
       }
     }
-    } catch (error) {
-      res.status(500).json({ error: error });
-    }
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
 }
