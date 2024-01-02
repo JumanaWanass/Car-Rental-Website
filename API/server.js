@@ -94,9 +94,3 @@ app.get('/checkSession', (req, res) => {
 app.listen(5000, () => console.log(`Server running on http://localhost:5000/`));
 
 
-// app.get('/car/create', (req, res) => {
-//   // Assuming you have attribute and value information
-//   const attributes = {
-//     attribute: 'color',
-//     value: 'blue'
-//   }});
