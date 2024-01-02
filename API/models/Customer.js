@@ -1,4 +1,6 @@
 const db = require('../config/db');
+const bcrypt = require("bcrypt");
+
 class Customer 
 {
     constructor(ssn, fname, lname, Bdate, street, countryName, city, email, password)
@@ -106,7 +108,6 @@ class Customer
         return newCustomer.save();
     }
     
-
     static async validateRegistration(email, ssn, country) 
     {
         // Check if the email is unique
@@ -129,5 +130,37 @@ class Customer
         return { success: true, message: 'Validation successful.' };
     }
     
+    static async isEmailRegistered(email) {
+        try {
+            const [result] = await this.findByAttributes({ email });
+            return result.length > 0;
+        } catch (error) {
+            console.error('Error checking if email is registered:', error);
+            return false;
+        }
+    }
+
+    static async validateLogin(email, password) {
+        try {
+            const [customerResult] = await this.findByAttributes({ email });
+
+            if (customerResult.length === 0) {
+                return { success: false, error: 'Email not registered' };
+            }
+
+            const storedPasswordHash = customerResult[0].Password;
+            const isPasswordValid = await bcrypt.compare(password, storedPasswordHash);
+
+            if (!isPasswordValid) {
+                return { success: false, error: 'Incorrect password' };
+            }
+
+            return { success: true, customer: customerResult[0] };
+        } catch (error) {
+            console.error('Error validating login:', error);
+            return { success: false, error: 'Unexpected Error. Please try again later.' };
+        }
+    }
 }
+
 module.exports = Customer;
