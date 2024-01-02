@@ -1,36 +1,38 @@
-function makeReservation(carID) {
-    // Assuming you have selectedCarID as the selected car ID
-    var selectedCarID = carID; // Get the selected car ID based on your logic
+var selectedCarID;
 
-    // Collect reservation information from the HTML form
-    var reservationData = {
-        country: $('#country').val(),
-        paymentStatus: 'Pending', // Set paymentStatus to Pending initially
-        pickupDate: $('#pickupdate').val(),
-        pickupStreet: $('#pickupstreet').val(),
-        pickupCity: $('#city').val(), // Assuming the city input is used for pickupCity
-        returnDate: $('#returndate').val(),
-        returnStreet: $('#returnstreet').val(),
-        returnCity: $('#city').val(), // Assuming the city input is used for returnCity
-        carID: selectedCarID,
-        empID: 'EMPLOYEE_ID', // Set the employee ID based on your logic
-        custID: 'CUSTOMER_ID', // Set the customer ID based on your logic
-    };
+    // Function to make a reservation
+    function makeReservation() {
+        // Collect reservation information from the form
+        var reservationData = {
+            country: $('#country').val(),
+            paymentStatus: 'Pending', // Set paymentStatus to Pending initially
+            pickupDate: $('#pickupdate').val(),
+            pickupStreet: $('#pickupstreet').val(),
+            pickupCity: $('#city').val(), // Assuming the city input is used for pickupCity
+            returnDate: $('#returndate').val(),
+            returnStreet: $('#returnstreet').val(),
+            returnCity: $('#city').val(), // Assuming the city input is used for returnCity
+            carID: selectedCarID,
+        };
 
-    // Create a reservation using the Reservation class
-    Reservation.createReservation(reservationData)
-        .then((result) => {
-            console.log('Reservation success:', result);
-            // Add any additional logic after successful reservation
-            // For example, update the car status to 'Reserved'
-            updateCarStatus(selectedCarID, 'Reserved');
-        })
-        .catch((error) => {
-            console.log('Error making reservation:', error);
-            // Handle errors
+        // Make an AJAX request to the backend
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:5000/reservation/",  // Adjust the URL based on your server
+            contentType: "application/json",
+            data: JSON.stringify(reservationData),
+            success: function (response) {
+                console.log('Reservation success:', response);
+                // Add any additional logic after successful reservation
+                // For example, update the car status to 'Reserved'
+                updateCarStatus(selectedCarID, 'Reserved');
+            },
+            error: function (error) {
+                console.log('Error making reservation:', error);
+                // Handle errors
+            },
         });
-}
-
+    }
 
 function updateCarStatus(carID, status) {
     // Update the car status to 'Reserved' in the Car table
@@ -74,7 +76,7 @@ function updateCarList(cars) {
 }
 
 $('#carResults').on('click', 'li', function() {
-selectedCarID = $(this).data('carID');
+selectedCarID = $(this).val('carID');
 console.log('Clicked on car with ID:', selectedCarID);
 
 });
@@ -83,7 +85,7 @@ console.log('Clicked on car with ID:', selectedCarID);
 $(document).ready(function () {
 // Assuming the button has an ID of "reserveButton"
     $('#reserveButton').on('click', function () {
-        makeReservation(selectedCarID); // Replace 'exampleCarID' with the actual car ID
+        makeReservation(); // Replace 'exampleCarID' with the actual car ID
     });
 });
 

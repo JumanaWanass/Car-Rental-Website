@@ -4,7 +4,6 @@ class Reservation
   constructor
   (
     country,
-    paymentStatus,
     pickupDate,
     pickupStreet,
     pickupCity,
@@ -17,7 +16,6 @@ class Reservation
   ) 
   {
     this.country = country;
-    this.paymentStatus = paymentStatus;
     this.pickupDate = pickupDate;
     this.pickupStreet = pickupStreet;
     this.pickupCity = pickupCity;
@@ -31,7 +29,6 @@ class Reservation
   async save() {
     const sql = `INSERT INTO Reservation(
             country,
-            paymentStatus,
             pickupDate,
             pickupStreet,
             pickupCity,
@@ -44,7 +41,6 @@ class Reservation
         )
         VALUES(
             '${this.country}',
-            '${this.paymentStatus}',
             '${this.pickupDate}',
             '${this.pickupStreet}',
             '${this.pickupCity}',
@@ -86,22 +82,21 @@ class Reservation
     return db.execute(sql);
   }
   
-  static createReservation(Reservation) {
-  const newReservation = new Reservation(
-    Reservation.country,
-    Reservation.paymentStatus,
-    Reservation.pickupDate,
-    Reservation.pickupStreet,
-    Reservation.pickupCity,
-    Reservation.returnDate,
-    Reservation.returnStreet,
-    Reservation.returnCity,
-    Reservation.carID,
-    Reservation.empID,
-    Reservation.custID
-  );
-  return newReservation.save();
-  }
+  static createReservation(data) {
+    const newReservation = new Reservation(
+      data.country,
+      data.pickupDate,
+      data.pickupStreet,
+      data.pickupCity,
+      data.returnDate,
+      data.returnStreet,
+      data.returnCity,
+      data.carID,
+      data.empID,
+      data.custID
+    );
+    return newReservation.save();
+    }
 
   static findAvailableCars() {
    
