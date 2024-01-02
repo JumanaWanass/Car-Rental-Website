@@ -23,8 +23,6 @@ var selectedCarID;
             data: JSON.stringify(reservationData),
             success: function (response) {
                 console.log('Reservation success:', response);
-                // Add any additional logic after successful reservation
-                // For example, update the car status to 'Reserved'
                 updateCarStatus(selectedCarID, 'Reserved');
             },
             error: function (error) {
