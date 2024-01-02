@@ -110,8 +110,10 @@ exports.login = async (req, res) => {
       req.session.userID = loginValidation.customer.ssn;
       req.session.admin = false;
       req.session.auth = true;
+      res.cookie('sessionId', );
 
-      res.status(200).json({ success: true, customer: loginValidation.customer });
+
+      res.status(200).json({ 'sessionId':req.sessionID });
   } catch (error) {
       console.error('Error in login route:', error);
       res.status(500).json({ error: 'Internal Server Error' });

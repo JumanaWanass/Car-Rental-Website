@@ -31,11 +31,16 @@ $(document).ready(function ()
         success: function (response) {
             messageElement.removeClass("text-danger").addClass("text-success").text("Registration successful. Redirecting...");
  
-            setTimeout(function () {
-                window.location.href = '../Frontend/index.html';
-            }, 2000); // Redirect after 2 seconds
+            Swal.fire(
+                'Success!',
+                'You have created new account successfully!',
+                'success'
+            ).then(() => {
+                window.location.href = '../Frontend/index.html'; // Replace with your target HTML page
+            });
         },
         error: function (error) {
+
             if (error.status === 400) {
                 // Validation error - display the error message
                 messageElement.removeClass("text-success").addClass("text-danger").text('Validation Error: ' + error.responseJSON.error);
@@ -43,7 +48,15 @@ $(document).ready(function ()
                 // Other errors - display a generic error message
                 messageElement.removeClass("text-success").addClass("text-danger").text('Unexpected Error. Please try again later.');
             }
+            Swal.fire({
+              title: 'Registration failed!',
+              text: error.responseJSON.error,
+              icon: 'error',
+              confirmButtonText: 'Understand!'
+            }).then((e) => {
+              return false;
+            });
         },
     });
  });
- });
+});

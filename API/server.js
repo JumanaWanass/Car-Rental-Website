@@ -1,7 +1,7 @@
-
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
+const path = require('path');
 const session = require('express-session');
 
 const app = express();  //we're hosting
@@ -13,20 +13,18 @@ app.use(express.json());
 // Setup session
 app.use(session({
   secret: process.env.SECRET,
-  cookie: {
-    sameSite: true,
-    httpOnly: false
-  },
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true,
+  cookie:{
+    httpOnly:true
+  }
 }));
 
-// CORS
+
 app.use(cors({
-  origin: true,
+  optionsSuccessStatus: 200,
   credentials: true,
-}));
-
+}))
 
 // Set up Multer storage
 const storage = multer.diskStorage({
@@ -69,7 +67,6 @@ app.get('/', (req, res) => {
 });
 
 
-
 // Routers
 app.use('/office', OfficeRouter);
 app.use('/car', CarRouter(upload));
@@ -83,12 +80,13 @@ app.get('/logout', (req, res) => {
   req.session.auth = false;
   req.session.userID = null;
   req.session.admin = false;
+  res.clearCookie('sessionId');
   res.status(200).json({message:"Logout"})
 });
 
 app.get('/checkSession', (req, res) => {
   const sessionExists = req.session.auth ? true : false;
-  res.json({ sessionExists });
+  res.status(200).json({ sessionExists });
 });
 
 app.listen(5000, () => console.log(`Server running on http://localhost:5000/`));

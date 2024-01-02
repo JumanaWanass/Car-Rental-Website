@@ -78,6 +78,12 @@ class Car
         return db.execute(sql);
     }
 
+    static updateStatusByID(carID, status)
+    {
+        const sql = `UPDATE Car SET status='${status}' WHERE carID='${carID}';`;
+        return db.execute(sql);
+    }
+
     static updateByAttributes(attributes, newValues) {
         const whereClause = Object.keys(attributes)
             .map(key => `${key}='${attributes[key]}'`)
