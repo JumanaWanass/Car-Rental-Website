@@ -75,12 +75,6 @@ function updateCarList(cars) {
 });
 }
 
-$('#carResults').on('click', 'li', function() {
-selectedCarID = $(this).val('carID');
-console.log('Clicked on car with ID:', selectedCarID);
-
-});
-
 
 $(document).ready(function () {
 // Assuming the button has an ID of "reserveButton"
