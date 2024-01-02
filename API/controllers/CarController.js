@@ -59,7 +59,7 @@ exports.createCar = async (req, res) => {
     car.photoID = req.file ? req.file.filename : 'default';
 
     try {
-        const result = await Car.createCar(car);
+        const [result,_] = await Car.createCar(car);
         res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: error.message, car:car });
@@ -71,8 +71,8 @@ exports.changeStat = async (req, res) => {
     const car = req.body; // Assuming car is sent in the request body
 
     try {
-        const result = await Car.updateStatusByID(car.carID, car.newStatus);
-        res.status(200).json(result);
+        const [result,_] = await Car.updateStatusByID(car.carID, car.newStatus);
+        res.status(200).json([result,_]);
     } catch (error) {
         res.status(500).json({ error: error.message, car:car });
     }
