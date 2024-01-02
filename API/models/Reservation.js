@@ -86,19 +86,19 @@ class Reservation
     return db.execute(sql);
   }
   
-  static createReservation(Reservation) {
+  static createReservation(data) {
   const newReservation = new Reservation(
-    Reservation.country,
-    Reservation.paymentStatus,
-    Reservation.pickupDate,
-    Reservation.pickupStreet,
-    Reservation.pickupCity,
-    Reservation.returnDate,
-    Reservation.returnStreet,
-    Reservation.returnCity,
-    Reservation.carID,
-    Reservation.empID,
-    Reservation.custID
+    data.country,
+    data.paymentStatus,
+    data.pickupDate,
+    data.pickupStreet,
+    data.pickupCity,
+    data.returnDate,
+    data.returnStreet,
+    data.returnCity,
+    data.carID,
+    data.empID,
+    data.custID
   );
   return newReservation.save();
   }
