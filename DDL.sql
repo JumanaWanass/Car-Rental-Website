@@ -53,7 +53,7 @@ Create Table Customer(
 Create Table Reservation(
     reserveID INT AUTO_INCREMENT PRIMARY KEY,
     country VARCHAR(255),
-    paymentStatus VARCHAR(255),
+    paymentDate DATE,
     pickupDate DATE,
     pickupStreet VARCHAR(255),
     pickupCity VARCHAR(255),
