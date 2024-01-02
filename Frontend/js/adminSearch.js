@@ -1,3 +1,7 @@
+const { Script } = require("vm");
+const reservation = require('.API\models\Reservation.js');
+
+
 $(document).ready(function() {
     fetchMakes();
 
@@ -14,6 +18,7 @@ $(document).ready(function() {
         data: JSON.stringify(formData),  // Convert form data to JSON string
                 success: function (response) {
                     console.log('Success:', response);
+                    updateCarList(response);
                 },
                 error: function (error) {
                     // Handle errors
@@ -23,6 +28,33 @@ $(document).ready(function() {
     });
 });
 
+// Add an event listener for the "Search Cars" button
+$('#searchCarsButton').on('click', function() {
+  fetchAllAvailableCars();
+});
+
+
+  function fetchAvailableCars(country, city) {
+      $.ajax({
+          method: "GET",
+          url: `http://localhost:5000/car/search?attribute=status&value=Available&country=${country}&city=${city}`,
+          success: function (response) {
+              updateCarList(response);
+          },
+          error: function (error) {
+              console.log('Error:', error);
+          },
+      });
+  }
+
+   // Add an event listener for the search button
+  $('#searchCarsBtn').on('click', function () {
+      var country = $('#country').val();
+      var city = $('#city').val();
+      
+      // Call the function to fetch available cars with country and city parameters
+      fetchAvailableCars(country, city);
+  });
 
 
  function populateDropdown(selector, items) {
@@ -60,7 +92,32 @@ function fetchMakes() {
     fetchModels($(this).val());
  });
  
-  
+// Attach a change event listener to the models dropdown
+$('#model').on('change', function() {
+  fetchColors($(this).val());
+});
+
+
+function fetchColors(make, model) {
+  var colorDropdown = $('#color');
+  colorDropdown.prop('disabled', true);
+
+  $.ajax({
+      method: "GET",
+      url: "http://localhost:5000/car/make-model-car-combinations",
+      data: { make: make, model: model },
+      success: function (response) {
+          let colors = response.map(item => item.color);
+
+          populateDropdown('#color', colors);
+          colorDropdown.prop('disabled', false);
+      },
+      error: function (error) {
+          console.log('Error:', error);
+          colorDropdown.prop('disabled', false);
+      },
+  });
+}
  
  function fetchModels(make) {
     var modelDropdown = $('#model');

@@ -33,6 +33,12 @@ class CarCustomerReservation {
        
         return db.execute(sql);
        }
+
+    static findAllAvailableCars() {
+        const sql = 'SELECT * FROM car WHERE carID NOT IN (SELECT carID FROM reservation)';
+        return db.execute(sql);
+  }
+  
 }
 
 module.exports = CarCustomerReservation;

@@ -36,29 +36,122 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script src="Frontend\js\adminSearch.js"></script>
+    <script src="reservation.js"></script>
+
 
     <script>
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
+    function makeReservation(carID) {
+        // Assuming you have selectedCarID as the selected car ID
+        var selectedCarID = carID; // Get the selected car ID based on your logic
+
+        // Collect reservation information from the HTML form
+        var reservationData = {
+            country: $('#country').val(),
+            paymentStatus: 'Pending', // Set paymentStatus to Pending initially
+            pickupDate: $('#pickupdate').val(),
+            pickupStreet: $('#pickupstreet').val(),
+            pickupCity: $('#city').val(), // Assuming the city input is used for pickupCity
+            returnDate: $('#returndate').val(),
+            returnStreet: $('#returnstreet').val(),
+            returnCity: $('#city').val(), // Assuming the city input is used for returnCity
+            carID: selectedCarID,
+            empID: 'EMPLOYEE_ID', // Set the employee ID based on your logic
+            custID: 'CUSTOMER_ID', // Set the customer ID based on your logic
+        };
+
+        // Create a reservation using the Reservation class
+        Reservation.createReservation(reservationData)
+            .then((result) => {
+                console.log('Reservation success:', result);
+                // Add any additional logic after successful reservation
+                // For example, update the car status to 'Reserved'
+                updateCarStatus(selectedCarID, 'Reserved');
+            })
+            .catch((error) => {
+                console.log('Error making reservation:', error);
+                // Handle errors
+            });
+    }
+    
+
+    function updateCarStatus(carID, status) {
+        // Update the car status to 'Reserved' in the Car table
+        const updateData = { status: status };
+        const whereClause = { carID: carID };
+
+        Car.updateByAttributes(whereClause, updateData)
+            .then((result) => {
+                console.log('Car status updated:', result);
+                // Add any additional logic after updating car status
+            })
+            .catch((error) => {
+                console.log('Error updating car status:', error);
+                // Handle errors
+            });
+    }
+
+    function showReservationForm() {
+        var reservationInfoSection = document.getElementById("reservationInfoSection");
+        reservationInfoSection.style.display = "block";
         }
 
-        function filterFunction() {
-            var input, filter, ul, li, a, i;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            div = document.getElementById("myDropdown");
-            a = div.getElementsByTagName("a");
-            for (i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    function updateCarList(cars) {
+        var carResults = $('#carResults');
+        carResults.empty();
+        var listItem;
+
+        cars.forEach(function (car) {
+
+        listItem = $('<li class="list-group-item"></li>').text(car.make + ' ' + car.model);
+
+        listItem.click(function() {
+            selectedCarID = car.carID;
+            console.log('Clicked on car with ID:', selectedCarID);
+            showReservationForm();
+
+        });
+
+        carResults.append(listItem);
+    });
+    }
+
+    $('#carResults').on('click', 'li', function() {
+    selectedCarID = $(this).data('carID');
+    console.log('Clicked on car with ID:', selectedCarID);
+
+    });
+    
+
+    $(document).ready(function () {
+    // Assuming the button has an ID of "reserveButton"
+        $('#reserveButton').on('click', function () {
+            makeReservation(selectedCarID); // Replace 'exampleCarID' with the actual car ID
+        });
+    });
+
+
+
+        function myFunction(dropdownId) {
+        document.getElementById(dropdownId).classList.toggle("show");
+    }
+
+        function filterFunction(inputId, dropdownId) {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById(inputId);
+        filter = input.value.toUpperCase();
+        div = document.getElementById(dropdownId);
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 a[i].style.display = "";
-                } else {
+            } else {
                 a[i].style.display = "none";
-                }
             }
         }
-        
-        </script>
+    }
+
+    </script>
 
 </head>
 
@@ -149,7 +242,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary" onclick="searchCars()">Search Cars</button>
+                        <button type="button" class="btn btn-primary" onclick="fetchAvailableCars('country','city')">Search Cars</button>
                     </div>
                 </div>
             </div>
@@ -161,6 +254,7 @@
             <div class="card-body">
                 <h2 class="card-title">Available Cars:</h2>
                 <ul class="list-group" id="carResults"></ul>
+
             </div>
             
         </div>
@@ -170,68 +264,66 @@
                 </div>
         </div>
         
-
-      
-
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Make</button>
-            <div id="myDropdown" class="dropdown-content">
+            <button onclick="myFunction('makeDropdown')" class="dropbtn">Make</button>
+            <div id="makeDropdown" class="dropdown-content">
                 <select id="make" name="make"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Model</button>
-            <div id="model" class="dropdown-content">
-                <input id="model" type="text" placeholder="Search.." >
+            <button onclick="myFunction('modelDropdown')" class="dropbtn">Model</button>
+            <div id="modelDropdown" class="dropdown-content">
+                <select id="model" name="model" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Color</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <button onclick="myFunction('colorDropdown')" class="dropbtn">Color</button>
+            <div id="colorDropdown" class="dropdown-content">
+                <select id="color" name="color" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
+                <!-- JavaScript will dynamically populate the options here -->
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="myFunction('transmissionDropdown')" class="dropbtn">Transmission Type</button>
+            <div id="transmissionDropdown" class="dropdown-content">
+                <select id="transmission" name="transmission" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Transmission type</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <button onclick="myFunction('seatNumbersDropdown')" class="dropbtn">Seat Numbers</button>
+            <div id="seatNumbersDropdown" class="dropdown-content">
+                <select id="seat" name="seat" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Seat numbers</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <button onclick="myFunction('kilometersDropdown')" class="dropbtn">Kilometers</button>
+            <div id="kilometersDropdown" class="dropdown-content">
+                <select id="km" name="km" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">kilometers</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <button onclick="myFunction('pricePerDayDropdown')" class="dropbtn">Price Per Day</button>
+            <div id="pricePerDayDropdown" class="dropdown-content">
+                <select id="price" name="price" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
         </div>
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Price per day</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+            <button onclick="myFunction('yearDropdown')" class="dropbtn">Year</button>
+            <div id="yearDropdown" class="dropdown-content">
+                <select id="year" name="year" onkeyup="filterFunction('modelInput', 'modelDropdown')"></select>
                 <!-- JavaScript will dynamically populate the options here -->
             </div>
-        </div>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">year</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                <!-- JavaScript will dynamically populate the options here -->
-            </div>
-        </div>
+        </div>        
     </div>
     <div class="container">
-        <div id="reservationInfoSection" >
+        <div id="reservationInfoSection" style="display: none;">
             <h2 class="card-title">Reservation information:</h2>
             <div class="row">
                 <div class="col-md-6">
@@ -283,6 +375,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" id="reserveButton">Reserve</button>
+                    </div>
+                </div>
+            </div>
+            
        
             
         </div>
@@ -544,13 +644,8 @@
 
             <!-- Template Javascript -->
             <script src="js/main.js"></script>
-<<<<<<< HEAD
             <script src= "js/adminSearch.js"></script>
 
-=======
-            <!-- Template Javascript -->
-            <script src="js/main.js"></script>
->>>>>>> 37c084e7aacd78d6ab63648f034837345f3fc1f0
 </body>
 
 
