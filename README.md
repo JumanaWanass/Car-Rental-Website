@@ -1,7 +1,7 @@
 # Royal Cars: Car Rental Website
 
 Welcome to our Car Rental System! This application is designed to streamline the process of car rental, making it convenient for both customers and administrators. Built using Node.js, AJAX, HTML, CSS, Bootstrap, and SQL, our system offers a range of features to manage car rentals efficiently.
-
+You can check out our website at: ![here]([home_page.png](https://jumanawanass.github.io/Car-Rental-Website/Frontend/index.html))
 ### Features:
 
 1. **Car Registration and Status Update:**
@@ -66,11 +66,9 @@ Welcome to our Car Rental System! This application is designed to streamline the
 
 ### Contributors:
 
-- John Doe (@johndoe)
-- Jane Smith (@janesmith)
+- Jumana Wanass (@JumanaWanass)
+- Salma ElMahy (@elmahygurl)
+- Abdallah ElSayed (@babhero)
+- Meriam Victor (@Meriam-Victor)
 
-### Issues and Support:
 
-For any issues or support, please contact our development team at support@carrentalsystem.com.
-
-Thank you for using our Car Rental System! We hope you find it efficient and user-friendly.
