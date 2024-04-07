@@ -1,82 +1,76 @@
-# Read me
+**Car Rental System Readme**
 
-# Car Rental API
+Welcome to our Car Rental System! This application is designed to streamline the process of car rental, making it convenient for both customers and administrators. Built using Node.js, AJAX, HTML, CSS, Bootstrap, and SQL, our system offers a range of features to manage car rentals efficiently.
 
-## Description
+### Features:
 
-This is a simple API for a car rental system. It provides endpoints to interact with different entities such as cars, customers, employees, offices, and reservations.
+1. **Car Registration and Status Update:**
+   - Administrators can register new cars into the system, providing details such as model, year, plate ID, and more.
+   - The system allows for updating the status of cars, such as marking them as active, out of service, rented, etc.
 
-## Prerequisites
+2. **Global Reservation:**
+   - Customers can reserve cars from anywhere in the world through our system, facilitating multiple office operations.
 
-- Node.js installed ([Download Node.js](https://nodejs.org/))
-- MySQL or MariaDB installed and running
-- XAMPP or similar tool for local development (optional)
+3. **Customer Account Creation:**
+   - Customers can create accounts by filling in their personal information, enabling them to reserve cars conveniently.
 
-## Installation
+4. **Automated Reservation Process:**
+   - Our system effectively automates manual procedures for car reservations, including reservation, pick-up, return, and payment.
 
-1. Clone the repository:
+5. **Advanced Search Functionality:**
+   - Customers can search for available cars based on various specifications, meeting their specific needs.
+   - Advanced search options allow searching by car information, customer information, or reservation day, providing comprehensive results.
 
-   ```bash
-   git clone https://github.com/JumanaWanass/Car-Rental-Website
-   cd API
-   ```
+6. **Basic Necessary Reports:**
+   - Generate reports for all reservations within a specified period, including detailed car and customer information.
+   - Obtain reports for all reservations of any car within a specified period, including specific car details.
+   - Check the status of all cars on a specific day to ensure smooth operations.
+   - Access reports for all reservations of a specific customer, including customer information, car model, and plate ID.
+   - View daily payments within a specific period, aiding in financial tracking.
 
-2. Install dependencies:
+### Screenshots:
 
-   ```bash
-   npm install
-   ```
+#### Home Page:
+![Home Page](home_page.png)
 
+#### Car Registration:
+![Car Registration](car_registration.png)
 
-## Database Setup
+#### Reservation Process:
+![Reservation Process](reservation_process.png)
 
-1. Create a database named `carrental` in your MySQL/MariaDB server.
+#### Advanced Search:
+![Advanced Search](advanced_search.png)
 
-2. Import the database schema from the `DDL.sql` file.
+#### Reports:
+![Reports](reports.png)
 
-## Running the Server
+### Getting Started:
 
-```bash
-npm start
-```
+1. **Installation:**
+   - Clone the repository to your local machine.
+   - Install Node.js if not already installed.
+   - Install necessary dependencies by running `npm install`.
 
-or for development
-```bash
-npm run dev
-```
+2. **Database Setup:**
+   - Set up your SQL database with the provided schema.
+   - Populate the database with test data to ensure all components are functioning correctly.
 
-The server will be running at [http://localhost:5000/](http://localhost:5000/).
+3. **Running the Application:**
+   - Start the server by running `node server.js`.
+   - Access the application through your browser at `http://localhost:3000`.
 
-## Testing Endpoints
+4. **Testing:**
+   - Perform thorough testing of all functionalities to ensure smooth operation.
+   - Use the provided test data to simulate different scenarios and validate system behavior.
 
-### Car Class
+### Contributors:
 
-- Get all cars: [http://localhost:5000/car](http://localhost:5000/car)
-- Get car by ID: [http://localhost:5000/car/search?attribute=carid&value=1](http://localhost:5000/car/search?attribute=carid&value=1)
-- Get cars by other attributes: [http://localhost:5000/car/search?attribute=color&value=Red](http://localhost:5000/car/search?attribute=color&value=Red)
+- John Doe (@johndoe)
+- Jane Smith (@janesmith)
 
-### Customer Class
+### Issues and Support:
 
-- Get all customers: [http://localhost:5000/customer](http://localhost:5000/customer)
-- Get customer by ID: [http://localhost:5000/customer/search?attribute=custid&value=1](http://localhost:5000/customer/search?attribute=custid&value=1)
-- Get customers by other attributes: [http://localhost:5000/customer/search?attribute=lname&value=Doe](http://localhost:5000/customer/search?attribute=lname&value=Doe)
+For any issues or support, please contact our development team at support@carrentalsystem.com.
 
-### Employee Class
-
-- Get all employees: [http://localhost:5000/employee](http://localhost:5000/employee)
-- Get employee by ID: [http://localhost:5000/employee/search?attribute=empid&value=1](http://localhost:5000/employee/search?attribute=empid&value=1)
-- Get employees by other attributes: [http://localhost:5000/cemployee/search?attribute=lname&value=Doe](http://localhost:5000/employee/search?attribute=lname&value=Doe)
-
-### Office Class
-
-- Get all offices: [http://localhost:5000/office](http://localhost:5000/office)
-- Get office by ID: [http://localhost:5000/office/search?attribute=officeid&value=1](http://localhost:5000/office/search?attribute=officeid&value=1)
-- Get office by telephone: [http://localhost:5000/office/search?attribute=telephone&value=123456789](http://localhost:5000/office/search?attribute=telephone&value=123456789)
-
-### Reservation Class
-
-- Get all reservations: [http://localhost:5000/reservation](http://localhost:5000/reservation)
-- Get reservation by ID: [http://localhost:5000/reservation/search?attribute=reserveid&value=1](http://localhost:5000/reservation/search?attribute=reservationid&value=1)
-- Get reservations by other attributes: [http://localhost:5000/reservation/search?attribute=custid&value=2](http://localhost:5000/reservation/search?attribute=custid&value=2)
-
->>>>>>>>> Temporary merge branch 2
+Thank you for using our Car Rental System! We hope you find it efficient and user-friendly.
