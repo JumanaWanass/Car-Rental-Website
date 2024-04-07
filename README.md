@@ -1,4 +1,4 @@
-**Car Rental System Readme**
+# Royal Cars: Car Rental Website
 
 Welcome to our Car Rental System! This application is designed to streamline the process of car rental, making it convenient for both customers and administrators. Built using Node.js, AJAX, HTML, CSS, Bootstrap, and SQL, our system offers a range of features to manage car rentals efficiently.
 
