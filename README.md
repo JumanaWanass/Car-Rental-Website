@@ -33,17 +33,17 @@ You can check out our website at: [here](https://jumanawanass.github.io/Car-Rent
 #### Home Page:
 ![Home Page](Home_page.png)
 
+#### Admin View:
+![Admin View](admin.png)
 #### Car Registration:
 ![Car Registration](car_registration.png)
 
 #### Reservation Process:
 ![Reservation Process](reservation_process.png)
 
-#### Advanced Search:
+#### Advanced Search for admin:
 ![Advanced Search](advanced_search.png)
 
-#### Reports:
-![Reports](reports.png)
 
 ### Getting Started:
 
